@@ -257,6 +257,13 @@ mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
    </ul>
    <h2 id="usage" md-src-pos="1185..1193">Usage</h2>
    <p md-src-pos="1194..1691"><span md-src-pos="1194..1213">The main code is in</span> <strong md-src-pos="1214..1233">skewb_solver.py</strong><span md-src-pos="1233..1234">.</span> <span md-src-pos="1235..1290">Run this python script and scan each face of the skewb.</span> <span md-src-pos="1291..1315">When you scan the skewb,</span> <span md-src-pos="1316..1416">you have to first find the white-green-red corner and place it at bottom right with white facing up.</span> <strong md-src-pos="1417..1432">Press enter</strong> <span md-src-pos="1433..1451">to capture a face,</span> <span md-src-pos="1452..1548">then follow the animation in the OpenCV preview window to rotate the cube to scan the next face.</span> <span md-src-pos="1549..1598">Should you have any difficulty scanning the cube,</span> <span md-src-pos="1599..1627">you could take a look at the</span> <a href="https://youtu.be/f4b-0wV-rUE?si=kuiRMmu7Bn71bkcC" md-src-pos="1628..1690">demo video</a><span md-src-pos="1690..1691">.</span></p>
+   <div class="video-container">
+       <h1>My Video</h1>
+       <video controls>
+           <source src="./demo.mp4" type="video/mp4">
+           Your browser does not support the video tag.
+       </video>
+   </div>
    <p md-src-pos="1693..2135"><span md-src-pos="1693..1718">After scanning all faces,</span> <span md-src-pos="1719..1772">the python programme will return the skewb algorithm.</span> <span md-src-pos="1773..1827">The skewb algorithm follows the WCA standard notation.</span> <span md-src-pos="1828..1877">Please refer to quick guide to WCA skewb notation</span> <a href="https://youtu.be/V7M_IKuUREs?si=tjRuOQzYD4ZzFDXb" md-src-pos="1878..1935">video</a><span md-src-pos="1935..1936">.</span> <span md-src-pos="1937..1940">Or,</span> <span md-src-pos="1941..2071">you could just click the link in the terminal under the skewb algorithm for the animation of showing the algorithm as shown in the</span> <a href="https://youtu.be/f4b-0wV-rUE?si=kuiRMmu7Bn71bkcC" md-src-pos="2072..2134">demo video</a><span md-src-pos="2134..2135">.</span></p>
    <h2 id="more-customisation" md-src-pos="2137..2158">More Customisation</h2>
    <p md-src-pos="2160..2365"><span md-src-pos="2160..2163">Let</span>'<span md-src-pos="2164..2191">s say you are right handed,</span> <span md-src-pos="2192..2250">you might want an algorithm that contain less lefty moves.</span> <span md-src-pos="2251..2364">You could actually tune the ratio of the probability of the type of turns that come up in Monte Carlo simulation.</span></p>
