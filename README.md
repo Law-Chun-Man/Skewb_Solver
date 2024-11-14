@@ -108,7 +108,7 @@ The first array is called centres[6], this defines the position of centres. The 
 * 1 --> green centre
 * 2 --> red centre
 * 3 --> blue centre
-* 4 --> orage centre
+* 4 --> orange centre
 * 5 --> yellow centre
 
 First entry of the array stores the position that white centre should be at when solved, second entry stores the position that green centre should be at when solved, and so on. When the centres are solved, the array should be {0, 1, 2, 3, 4, 5}.
