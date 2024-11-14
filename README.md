@@ -137,33 +137,33 @@ This programme will then do random moves to the skewb and check whether it is so
 
 The colour recognition is done by python opencv. For colours other than white, I allowed a range of hue and saturation shift from my defined colours.
 
-  ```python
+```python
 def get_limits(colour):
     #...
-    lower_limit = hsvC[0][0][0] - 10, 100, 100 #set the lower bound of the hue shift and saturation
-    upper_limit = hsvC[0][0][0] + 10, 255, 255 #set the upper bound of the hue shift and saturation
+    lower_limit = hsvC[0][0][0] - 10, 100, 100
+    upper_limit = hsvC[0][0][0] + 10, 255, 255
     #...
     return lower_limit, upper_limit
-  ```
+```
 
 In the above function, the -10 and +10 refers to hue shift, while 100 and 255 refers to minimum and maximum saturation respectively.
 
 For white colour, it's not that meaningful to define hue shift. Therefore, I hard coded the lower and upper limit of white colour.
 
-  ```python
-  lower_white, upper_white = np.array([0, 0, 150], dtype=np.uint8), np.array([179, 55, 255], dtype=np.uint8)
-  ```
+```python
+lower_white, upper_white = np.array([0, 0, 150], dtype=np.uint8), np.array([179, 55, 255], dtype=np.uint8)
+```
 
 ### 5.7. Inputting Colour With Python Script
 
-  ```python
-  process = subprocess.Popen(['./a'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-  output, error = process.communicate(input=input_string)
-  if error:
-      print(error)
-  else:
-      print(output)
-  ```
+```python
+process = subprocess.Popen(['./a'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+output, error = process.communicate(input=input_string)
+if error:
+    print(error)
+else:
+    print(output)
+```
 
 At the end of **skewb_solver.py**, it will run the **./a** compiled from **skewb_solution_finder.cpp**, then it will input the colour of each side, capture and display the output from the C++ programme.
 
