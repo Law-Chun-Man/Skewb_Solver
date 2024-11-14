@@ -50,6 +50,8 @@ This programme requires you to connect a webcam to the computer,
 ## 3. Usage
 The main code is in **skewb_solver.py**. Run this python script and scan each face of the skewb. When you scan the skewb, you have to first find the white-green-red corner and place it at bottom right with white facing up. Press enter to capture a face, then follow the animation in the OpenCV preview window to rotate the cube to scan the next face. Should you have any difficulty scanning the cube, you could take a look at the [demo video](https://youtu.be/f4b-0wV-rUE?si=kuiRMmu7Bn71bkcC).
 
+<iframe width="640" height="360" src="https://youtu.be/f4b-0wV-rUE?si=kuiRMmu7Bn71bkcC" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 After scanning all faces, the python programme will return the skewb algorithm. The skewb algorithm follows the WCA standard notation. Please refer to quick guide to WCA skewb notation [video](https://youtu.be/V7M_IKuUREs?si=tjRuOQzYD4ZzFDXb). Or, you could just click the link in the terminal under the skewb algorithm for the animation of showing the algorithm as shown in the [demo video](https://youtu.be/f4b-0wV-rUE?si=kuiRMmu7Bn71bkcC).
 
 ## 4. More Customisation
