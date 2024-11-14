@@ -52,7 +52,11 @@ The main code is in **skewb_solver.py**. Run this python script and scan each fa
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/f4b-0wV-rUE" title="Skewb solver programme demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-After scanning all faces, the python programme will return the skewb algorithm. The skewb algorithm follows the WCA standard notation. Please refer to quick guide to WCA skewb notation [video](https://youtu.be/V7M_IKuUREs?si=tjRuOQzYD4ZzFDXb). Or, you could just click the link in the terminal under the skewb algorithm for the animation of showing the algorithm as shown in the [demo video](https://youtu.be/f4b-0wV-rUE?si=kuiRMmu7Bn71bkcC).
+After scanning all faces, the python programme will return the skewb algorithm. The skewb algorithm follows the WCA standard notation. Please refer to quick guide to WCA skewb notation [video](https://youtu.be/V7M_IKuUREs?si=tjRuOQzYD4ZzFDXb).
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/V7M_IKuUREs" title="Quick Guide to WCA Skewb Notation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+Or, you could just click the link in the terminal under the skewb algorithm for the animation of showing the algorithm as shown in the [demo video](https://youtu.be/f4b-0wV-rUE?si=kuiRMmu7Bn71bkcC).
 
 ## 4. More Customisation
 
