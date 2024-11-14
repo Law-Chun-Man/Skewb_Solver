@@ -48,7 +48,7 @@ This programme requires you to connect a webcam to the computer,
   ```
 
 ## 3. Usage
-The main code is in **skewb_solver.py**. Run this python script and scan each face of the skewb. When you scan the skewb, you have to first find the white-green-red corner and place it at bottom right with white facing up. **Press enter** to capture a face, then follow the animation in the OpenCV preview window to rotate the cube to scan the next face. Should you have any difficulty scanning the cube, you could take a look at the [demo video](https://youtu.be/f4b-0wV-rUE?si=kuiRMmu7Bn71bkcC).
+The main code is in **skewb_solver.py**. Run this python script and scan each face of the skewb. When you scan the skewb, you have to first find the white-green-red corner and place it at bottom right with white facing up. Press enter to capture a face, then follow the animation in the OpenCV preview window to rotate the cube to scan the next face. Should you have any difficulty scanning the cube, you could take a look at the [demo video](https://youtu.be/f4b-0wV-rUE?si=kuiRMmu7Bn71bkcC).
 
 After scanning all faces, the python programme will return the skewb algorithm. The skewb algorithm follows the WCA standard notation. Please refer to quick guide to WCA skewb notation [video](https://youtu.be/V7M_IKuUREs?si=tjRuOQzYD4ZzFDXb). Or, you could just click the link in the terminal under the skewb algorithm for the animation of showing the algorithm as shown in the [demo video](https://youtu.be/f4b-0wV-rUE?si=kuiRMmu7Bn71bkcC).
 
@@ -134,6 +134,38 @@ God's number is the maximum number of turns needed to solve any state of a cube.
 This programme will then do random moves to the skewb and check whether it is solved after each moves. If solution is not found after doing 12 moves (one more move than God's number), it will search for another algorithm. The programme will avoid applying duplicated moves, such as R after R or R'. The Monte Carlo simulation will be based on the ratio set in line 8 of the code, and the probability of generating clockwise and counterclockwise turn are the same.
 
 ### 5.6. Colour Recognition
+
+The colour recognition is done by python opencv. For colours other than white, I allowed a range of hue and saturation shift from my defined colours.
+
+  ```python
+def get_limits(colour):
+    #...
+    lower_limit = hsvC[0][0][0] - 10, 100, 100 #set the lower bound of the hue shift and saturation
+    upper_limit = hsvC[0][0][0] + 10, 255, 255 #set the upper bound of the hue shift and saturation
+    #...
+    return lower_limit, upper_limit
+  ```
+
+In the above function, the -10 and +10 refers to hue shift, while 100 and 255 refers to minimum and maximum saturation respectively.
+
+For white colour, it's not that meaningful to define hue shift. Therefore, I hard coded the lower and upper limit of white colour.
+
+  ```python
+  lower_white, upper_white = np.array([0, 0, 150], dtype=np.uint8), np.array([179, 55, 255], dtype=np.uint8)
+  ```
+
+### 5.7. Inputting Colour With Python Script
+
+  ```python
+  process = subprocess.Popen(['./a'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+  output, error = process.communicate(input=input_string)
+  if error:
+      print(error)
+  else:
+      print(output)
+  ```
+
+At the end of **skewb_solver.py**, it will run the **./a** compiled from **skewb_solution_finder.cpp**, then it will input the colour of each side, capture and display the output from the C++ programme.
 
 ## 6. Finding Fewest Moves Solution
 
