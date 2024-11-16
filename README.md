@@ -74,23 +74,17 @@ In the **skewb_solution_finder.cpp**, I defined the state of the skewb using 3 a
 
 * Input w for white, g for green, r for red, b for blue, o for orange, y for yellow.
 
-![order_front](/README_picture/order_front.jpeg)
-![order_back](/README_picture/order_back.jpeg)
+|Front|Back|
+|:---:|:---:|
+|![order_front](/README_picture/order_front.jpeg)|![order_back](/README_picture/order_back.jpeg)|
 
 Then there is a function that converts the colours to the 3 arrays that define the skewb's state.
 
 ### 5.1. Understanding Mechanism of the Skewb
-* Centres
 
-![centres](/README_picture/centres.png)
-
-* Attached corners
-
-![attached_corners](/README_picture/attached_corners.png)
-
-* Floating corners
-
-![floating_corners](/README_picture/floating_corners.png)
+|Centres|Attached corners|Floating corners|
+|:---:|:---:|:---:|
+|![centres](/README_picture/centres.png)|![attached_corners](/README_picture/attached_corners.png)|![floating_corners](/README_picture/floating_corners.png)|
 
 As shown in the figures, centre is the center piece with only one colour. Corner on the other hand contains 3 colours, and they are categorised into 2, attached corners, and floating corners. When you disassemble the cube, you will find that the attached corners are connected to the core piece, and their relative positions cannot change. Floating corners of the other hand, do not connect to the core, they can move around.
 
