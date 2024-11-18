@@ -1,4 +1,5 @@
 # Skewb Solver (Monte Carlo)
+## 4061 Project B report
 
 ## 1. About the Project
 
@@ -184,3 +185,14 @@ Then I tried to find the moves needed to solve the 5 scrambles of Carter Kucala'
 For the last solve, he did find the 8 moves solution. However, he did not find the 7 moves solution for the third solve. This shows that the current method that the top solvers are using (NS algorithm) is unable to attain the fewest moves solution.
 
 It's also worth noting that the third fastest solve was done by Simon Kellum in this same competition, solving that same scramble! This shows that luck really play a role in skewb solves.
+
+## 7. Reference
+
+External library used:
+* numpy
+* Pillow
+* OpenCV
+* Matplotlib
+
+Website used to animate algorithms: https://alpha.twizzle.net/edit/?puzzle=skewb  
+Github page of the website: https://github.com/cubing/alg.cubing.net 
