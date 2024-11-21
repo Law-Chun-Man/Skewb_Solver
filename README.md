@@ -1,13 +1,33 @@
 # Skewb Solver (Monte Carlo)
 ## 4061 Project B report
 
+## Content
+* README
+1. [About the project](#1-about-the-project)  
+1. [Getting Started](#2-getting-started)  
+    1. [Installation](#2-i-installation)  
+    1. [Preparation](#2-ii-preparation)  
+1. [Usage](#3-usage)  
+1. [More Customisation](#4-more-customisation)
+* Report
+5. [How this Programme Works](#5-how-this-programme-works)
+   1. [Understanding Mechanism of the Skewb](#5-i-understanding-mechanism-of-the-skewb)
+   1. [Defining the State of the Skewb](#5-ii-defining-the-state-of-the-skewb)
+   1. [Defining Turns](#5-iii-defining-turns)
+   1. [God's Number](#5-iv-gods-number)
+   1. [Monte Carlo](#5-v-monte-carlo)
+   1. [Colour Recognition](#5-vi-colour-recognition)
+   1. [Inputting Colour with Python Script](#5-vii-inputting-colour-with-python-script)
+1. [Finding Fewest Moves Solution](#6-finding-fewest-moves-solution)  
+1. [Reference](#7-reference)
+
 ## 1. About the Project
 
 This programme allows user to capture all sides of the skewb, and solve it with the algorithm found by using Monte Carlo.
 
 ## 2. Getting Started
 
-### 2.1. Installation
+### 2. i. Installation
 
 To be able to run the python programme, you need to have numpy, Pillow and OpenCV installed.
 
@@ -25,7 +45,7 @@ To be able to run the python programme, you need to have numpy, Pillow and OpenC
   pip install opencv-python
   ```
 
-### 2.2. Preparation
+### 2. ii. Preparation
 Please put all the files and folders in the same directory.
 
 The colour input is done by python opencv, and the skewb algorithm finder is done in C++ using Monte Carlo. Therefore, you need to first compile the C++ programme.
@@ -81,7 +101,7 @@ In the **skewb_solution_finder.cpp**, I defined the state of the skewb using 3 a
 
 Then there is a function that converts the colours to the 3 arrays that define the skewb's state.
 
-### 5.1. Understanding Mechanism of the Skewb
+### 5. i. Understanding Mechanism of the Skewb
 
 |Centres|Attached corners|Floating corners|
 |:---:|:---:|:---:|
@@ -89,7 +109,7 @@ Then there is a function that converts the colours to the 3 arrays that define t
 
 As shown in the figures, centre is the center piece with only one colour. Corner on the other hand contains 3 colours, and they are categorised into 2, attached corners, and floating corners. When you disassemble the cube, you will find that the attached corners are connected to the core piece, and their relative positions cannot change. Floating corners of the other hand, do not connect to the core, they can move around.
 
-### 5.2. Defining the State of the Skewb
+### 5. ii. Defining the State of the Skewb
 
 Now that you understand the basic mechanism of a skewb, we can now try to understand how to define the state of a skewb.
 
@@ -122,19 +142,19 @@ First entry of the array stores the position that white-orange-blue corner shoul
 
 The third array is called corners_o[7], this defines the orientation of the corners. Each corner must have either white or yellow colour, when the white or yellow colour faces up or down, the entry is 0, when it faces right-front or left-back, the input is 1, when it faces left-front or right-back, the input is 2. The first entry stores the orientation of white-orange-blue corner (0 corner), the second entry stores the orientation of white-red-blue corner (1 corner), and so on. When the orientation of corners are solved, the array should be {0, 0, 0, 0, 0, 0, 0}.
 
-### 5.3. Defining Turns
+### 5. iii. Defining Turns
 
 There are 8 different turns, namely R, R', L, L', U, U', B and B'. There are 8 functions, one for each turn. Each functions will apply necessary changes to the 3 arrays to do the turn to the "virtual cube".
 
-### 5.4. God's Number
+### 5. iv. God's Number
 
 God's number is the maximum number of turns needed to solve any state of a cube. For skewb, the God's number is 11.
 
-### 5.5. Monte Carlo
+### 5. v. Monte Carlo
 
 This programme will then do random moves to the skewb and check whether it is solved after each moves. If solution is not found after doing 12 moves (one more move than God's number), it will search for another algorithm. The programme will avoid applying duplicated moves, such as R after R or R'. The Monte Carlo simulation will be based on the ratio set in line 8 of the code, and the probability of generating clockwise and counterclockwise turn are the same.
 
-### 5.6. Colour Recognition
+### 5. vi. Colour Recognition
 
 The colour recognition is done by python opencv. For colours other than white, I allowed a range of hue and saturation shift from my defined colours.
 
@@ -155,7 +175,7 @@ For white colour, it's not that meaningful to define hue shift. Therefore, I har
 lower_white, upper_white = np.array([0, 0, 150], dtype=np.uint8), np.array([179, 55, 255], dtype=np.uint8)
 ```
 
-### 5.7. Inputting Colour With Python Script
+### 5. vii. Inputting Colour With Python Script
 
 ```python
 process = subprocess.Popen(['./a'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
