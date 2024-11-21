@@ -2,27 +2,23 @@
 ## 4061 Project B report
 
 ## Content
-* README  
 
 1. [About the project](#1-about-the-project)  
-1. [Getting Started](#2-getting-started)  
+2. [Getting Started](#2-getting-started)  
     1. [Installation](#2-i-installation)  
-    1. [Preparation](#2-ii-preparation)  
-1. [Usage](#3-usage)  
-1. [More Customisation](#4-more-customisation)
-
-* Report  
-
-5. [How this Programme Works](#5-how-this-programme-works)
-   1. [Understanding Mechanism of the Skewb](#5-i-understanding-mechanism-of-the-skewb)
-   1. [Defining the State of the Skewb](#5-ii-defining-the-state-of-the-skewb)
-   1. [Defining Turns](#5-iii-defining-turns)
-   1. [God's Number](#5-iv-gods-number)
-   1. [Monte Carlo](#5-v-monte-carlo)
-   1. [Colour Recognition](#5-vi-colour-recognition)
-   1. [Inputting Colour with Python Script](#5-vii-inputting-colour-with-python-script)
-1. [Finding Fewest Moves Solution](#6-finding-fewest-moves-solution)  
-1. [Reference](#7-reference)
+    2. [Preparation](#2-ii-preparation)  
+3. [Usage](#3-usage)  
+4. [More Customisation](#4-more-customisation)  
+5. [How this Programme Works](#5-how-this-programme-works)  
+   1. [Understanding Mechanism of the Skewb](#5-i-understanding-mechanism-of-the-skewb)  
+   2. [Defining the State of the Skewb](#5-ii-defining-the-state-of-the-skewb)  
+   3. [Defining Turns](#5-iii-defining-turns)  
+   4. [God's Number](#5-iv-gods-number)  
+   5. [Monte Carlo](#5-v-monte-carlo)  
+   6. [Colour Recognition](#5-vi-colour-recognition)  
+   7. [Inputting Colour with Python Script](#5-vii-inputting-colour-with-python-script)  
+6. [Finding Fewest Moves Solution](#6-finding-fewest-moves-solution)  
+7. [Reference](#7-reference)  
 
 ## 1. About the Project
 
