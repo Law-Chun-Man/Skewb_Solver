@@ -2,14 +2,17 @@
 ## 4061 Project B report
 
 ## Content
-* README
+* README  
+
 1. [About the project](#1-about-the-project)  
 1. [Getting Started](#2-getting-started)  
     1. [Installation](#2-i-installation)  
     1. [Preparation](#2-ii-preparation)  
 1. [Usage](#3-usage)  
 1. [More Customisation](#4-more-customisation)
-* Report
+
+* Report  
+
 5. [How this Programme Works](#5-how-this-programme-works)
    1. [Understanding Mechanism of the Skewb](#5-i-understanding-mechanism-of-the-skewb)
    1. [Defining the State of the Skewb](#5-ii-defining-the-state-of-the-skewb)
