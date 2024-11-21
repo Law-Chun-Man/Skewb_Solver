@@ -1,0 +1,447 @@
+<!doctype html>
+<html>
+ <head>
+  <style type="text/css">.CtxtMenu_InfoClose {  top:.2em; right:.2em;}
+.CtxtMenu_InfoContent {  overflow:auto; text-align:left; font-size:80%;  padding:.4em .6em; border:1px inset; margin:1em 0px;  max-height:20em; max-width:30em; background-color:#EEEEEE;  white-space:normal;}
+.CtxtMenu_Info.CtxtMenu_MousePost {outline:none;}
+.CtxtMenu_Info {  position:fixed; left:50%; width:auto; text-align:center;  border:3px outset; padding:1em 2em; background-color:#DDDDDD;  color:black;  cursor:default; font-family:message-box; font-size:120%;  font-style:normal; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 15px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius:15px;               /* Safari and Chrome */  -moz-border-radius:15px;                  /* Firefox */  -khtml-border-radius:15px;                /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color="gray", Positive="true"); /* IE */}
+</style>
+  <style type="text/css">.CtxtMenu_MenuClose {  position:absolute;  cursor:pointer;  display:inline-block;  border:2px solid #AAA;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  font-family: "Courier New", Courier;  font-size:24px;  color:#F0F0F0}
+.CtxtMenu_MenuClose span {  display:block; background-color:#AAA; border:1.5px solid;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  line-height:0;  padding:8px 0 6px     /* may need to be browser-specific */}
+.CtxtMenu_MenuClose:hover {  color:white!important;  border:2px solid #CCC!important}
+.CtxtMenu_MenuClose:hover span {  background-color:#CCC!important}
+.CtxtMenu_MenuClose:hover:focus {  outline:none}
+</style>
+  <style type="text/css">.CtxtMenu_Menu {  position:absolute;  background-color:white;  color:black;  width:auto; padding:5px 0px;  border:1px solid #CCCCCC; margin:0; cursor:default;  font: menu; text-align:left; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 5px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius: 5px;             /* Safari and Chrome */  -moz-border-radius: 5px;                /* Firefox */  -khtml-border-radius: 5px;              /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */}
+.CtxtMenu_MenuItem {  padding: 1px 2em;  background:transparent;}
+.CtxtMenu_MenuArrow {  position:absolute; right:.5em; padding-top:.25em; color:#666666;  font-family: null; font-size: .75em}
+.CtxtMenu_MenuActive .CtxtMenu_MenuArrow {color:white}
+.CtxtMenu_MenuArrow.CtxtMenu_RTL {left:.5em; right:auto}
+.CtxtMenu_MenuCheck {  position:absolute; left:.7em;  font-family: null}
+.CtxtMenu_MenuCheck.CtxtMenu_RTL { right:.7em; left:auto }
+.CtxtMenu_MenuRadioCheck {  position:absolute; left: .7em;}
+.CtxtMenu_MenuRadioCheck.CtxtMenu_RTL {  right: .7em; left:auto}
+.CtxtMenu_MenuInputBox {  padding-left: 1em; right:.5em; color:#666666;  font-family: null;}
+.CtxtMenu_MenuInputBox.CtxtMenu_RTL {  left: .1em;}
+.CtxtMenu_MenuComboBox {  left:.1em; padding-bottom:.5em;}
+.CtxtMenu_MenuSlider {  left: .1em;}
+.CtxtMenu_SliderValue {  position:absolute; right:.1em; padding-top:.25em; color:#333333;  font-size: .75em}
+.CtxtMenu_SliderBar {  outline: none; background: #d3d3d3}
+.CtxtMenu_MenuLabel {  padding: 1px 2em 3px 1.33em;  font-style:italic}
+.CtxtMenu_MenuRule {  border-top: 1px solid #DDDDDD;  margin: 4px 3px;}
+.CtxtMenu_MenuDisabled {  color:GrayText}
+.CtxtMenu_MenuActive {  background-color: #606872;  color: white;}
+.CtxtMenu_MenuDisabled:focus {  background-color: #E8E8E8}
+.CtxtMenu_MenuLabel:focus {  background-color: #E8E8E8}
+.CtxtMenu_ContextMenu:focus {  outline:none}
+.CtxtMenu_ContextMenu .CtxtMenu_MenuItem:focus {  outline:none}
+.CtxtMenu_SelectionMenu {  position:relative; float:left;  border-bottom: none; -webkit-box-shadow:none; -webkit-border-radius:0px; }
+.CtxtMenu_SelectionItem {  padding-right: 1em;}
+.CtxtMenu_Selection {  right: 40%; width:50%; }
+.CtxtMenu_SelectionBox {  padding: 0em; max-height:20em; max-width: none;  background-color:#FFFFFF;}
+.CtxtMenu_SelectionDivider {  clear: both; border-top: 2px solid #000000;}
+.CtxtMenu_Menu .CtxtMenu_MenuClose {  top:-10px; left:-10px}
+</style>
+  <style id="MJX-SVG-styles">
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+</style>
+  <style>/* Reworked by IntelliJ Team The MIT License (MIT) Copyright (c) JetBrains Adapted from https://github.com/sindresorhus/github-markdown-css The MIT License (MIT) Copyright (c) Sindre Sorhus &lt;sindresorhus@gmail.com&gt; (sindresorhus.com) Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. */ @font-face { font-family: octicons-anchor; src: url(data:font/woff;charset=utf-8;base64,d09GRgABAAAAAAYcAA0AAAAACjQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRlRNAAABMAAAABwAAAAca8vGTk9TLzIAAAFMAAAARAAAAFZG1VHVY21hcAAAAZAAAAA+AAABQgAP9AdjdnQgAAAB0AAAAAQAAAAEACICiGdhc3AAAAHUAAAACAAAAAj//wADZ2x5ZgAAAdwAAADRAAABEKyikaNoZWFkAAACsAAAAC0AAAA2AtXoA2hoZWEAAALgAAAAHAAAACQHngNFaG10eAAAAvwAAAAQAAAAEAwAACJsb2NhAAADDAAAAAoAAAAKALIAVG1heHAAAAMYAAAAHwAAACABEAB2bmFtZQAAAzgAAALBAAAFu3I9x/Nwb3N0AAAF/AAAAB0AAAAvaoFvbwAAAAEAAAAAzBdyYwAAAADP2IQvAAAAAM/bz7t4nGNgZGFgnMDAysDB1Ml0hoGBoR9CM75mMGLkYGBgYmBlZsAKAtJcUxgcPsR8iGF2+O/AEMPsznAYKMwIkgMA5REMOXicY2BgYGaAYBkGRgYQsAHyGMF8FgYFIM0ChED+h5j//yEk/3KoSgZGNgYYk4GRCUgwMaACRoZhDwCs7QgGAAAAIgKIAAAAAf//AAJ4nHWMMQrCQBBF/0zWrCCIKUQsTDCL2EXMohYGSSmorScInsRGL2DOYJe0Ntp7BK+gJ1BxF1stZvjz/v8DRghQzEc4kIgKwiAppcA9LtzKLSkdNhKFY3HF4lK69ExKslx7Xa+vPRVS43G98vG1DnkDMIBUgFN0MDXflU8tbaZOUkXUH0+U27RoRpOIyCKjbMCVejwypzJJG4jIwb43rfl6wbwanocrJm9XFYfskuVC5K/TPyczNU7b84CXcbxks1Un6H6tLH9vf2LRnn8Ax7A5WQAAAHicY2BkYGAA4teL1+yI57f5ysDNwgAC529f0kOmWRiYVgEpDgYmEA8AUzEKsQAAAHicY2BkYGB2+O/AEMPCAAJAkpEBFbAAADgKAe0EAAAiAAAAAAQAAAAEAAAAAAAAKgAqACoAiAAAeJxjYGRgYGBhsGFgYgABEMkFhAwM/xn0QAIAD6YBhwB4nI1Ty07cMBS9QwKlQapQW3VXySvEqDCZGbGaHULiIQ1FKgjWMxknMfLEke2A+IJu+wntrt/QbVf9gG75jK577Lg8K1qQPCfnnnt8fX1NRC/pmjrk/zprC+8D7tBy9DHgBXoWfQ44Av8t4Bj4Z8CLtBL9CniJluPXASf0Lm4CXqFX8Q84dOLnMB17N4c7tBo1AS/Qi+hTwBH4rwHHwN8DXqQ30XXAS7QaLwSc0Gn8NuAVWou/gFmnjLrEaEh9GmDdDGgL3B4JsrRPDU2hTOiMSuJUIdKQQayiAth69r6akSSFqIJuA19TrzCIaY8sIoxyrNIrL//pw7A2iMygkX5vDj+G+kuoLdX4GlGK/8Lnlz6/h9MpmoO9rafrz7ILXEHHaAx95s9lsI7AHNMBWEZHULnfAXwG9/ZqdzLI08iuwRloXE8kfhXYAvE23+23DU3t626rbs8/8adv+9DWknsHp3E17oCf+Z48rvEQNZ78paYM38qfk3v/u3l3u3GXN2Dmvmvpf1Srwk3pB/VSsp512bA/GG5i2WJ7wu430yQ5K3nFGiOqgtmSB5pJVSizwaacmUZzZhXLlZTq8qGGFY2YcSkqbth6aW1tRmlaCFs2016m5qn36SbJrqosG4uMV4aP2PHBmB3tjtmgN2izkGQyLWprekbIntJFing32a5rKWCN/SdSoga45EJykyQ7asZvHQ8PTm6cslIpwyeyjbVltNikc2HTR7YKh9LBl9DADC0U/jLcBZDKrMhUBfQBvXRzLtFtjU9eNHKin0x5InTqb8lNpfKv1s1xHzTXRqgKzek/mb7nB8RZTCDhGEX3kK/8Q75AmUM/eLkfA+0Hi908Kx4eNsMgudg5GLdRD7a84npi+YxNr5i5KIbW5izXas7cHXIMAau1OueZhfj+cOcP3P8MNIWLyYOBuxL6DRylJ4cAAAB4nGNgYoAALjDJyIAOWMCiTIxMLDmZedkABtIBygAAAA==) format('woff'); } body { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Helvetica, Arial, freesans, sans-serif; font-size: 14px; line-height: 1.6; word-wrap: break-word; margin: 0 2em; } strong { font-weight: bold; } img { border: 0; } input { color: inherit; font: inherit; margin: 0; line-height: normal; } html input[disabled] { cursor: default; } input[type="checkbox"] { box-sizing: border-box; padding: 0; } body * { box-sizing: border-box; } input { font: 13px/1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; } a { text-decoration: none; } a:hover, a:active { text-decoration: underline; } hr { height: 1px; padding: 0; margin: 20px 0; border: 0 none; } hr:before { display: table; content: ""; } hr:after { display: table; clear: both; content: ""; } blockquote { margin: 0; } ul, ol { padding: 0; margin-top: 0; margin-bottom: 0; } ol ol, ul ol { list-style-type: lower-roman; } ul ul ol, ul ol ol, ol ul ol, ol ol ol { list-style-type: lower-alpha; } dd { margin-left: 0; } .octicon { font: normal normal normal 16px/1 octicons-anchor; display: inline-block; text-decoration: none; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; } .octicon-link:before { content: '\f05c'; } .markdown-body &gt; *:first-child { margin-top: 0 !important; } .markdown-body &gt; *:last-child { margin-bottom: 0 !important; } .anchor { position: absolute; top: 0; left: 0; display: block; padding-right: 6px; padding-left: 30px; margin-left: -30px; } .anchor:focus { outline: none; } h1, h2, h3, h4, h5, h6 { position: relative; margin-top: 1em; margin-bottom: 16px; font-weight: bold; line-height: 1.4; } h1 .octicon-link, h2 .octicon-link, h3 .octicon-link, h4 .octicon-link, h5 .octicon-link, h6 .octicon-link { display: none; color: #000; vertical-align: middle; } h1:hover .anchor, h2:hover .anchor, h3:hover .anchor, h4:hover .anchor, h5:hover .anchor, h6:hover .anchor { padding-left: 8px; margin-left: -30px; text-decoration: none; } h1:hover .anchor .octicon-link, h2:hover .anchor .octicon-link, h3:hover .anchor .octicon-link, h4:hover .anchor .octicon-link, h5:hover .anchor .octicon-link, h6:hover .anchor .octicon-link { display: inline-block; } h1 { font-size: 2.2em; padding-top: 0.6em; } h1 .anchor { line-height: 1; } h2 { font-size: 1.8em; line-height: 1.2; padding-top: 0.6em; } h2 .anchor { line-height: 1.2; } h3 { font-size: 1.3em; line-height: 1; padding-top: 0.6em; } h3 .anchor { line-height: 1.2; } h4 { font-size: 1em; } h4 .anchor { line-height: 1.2; } h5 { font-size: 1em; } h5 .anchor { line-height: 1.1; } h6 { font-size: 1em; } h6 .anchor { line-height: 1.1; } p, blockquote, ul, ol, dl, table, pre { margin-top: 16px; margin-bottom: 16px; } pre.frontmatter-header { background-color: transparent; margin: 0; padding: 0; } ul, ol { padding-left: 2em; } ul ul, ul ol, ol ol, ol ul { margin-top: 0; margin-bottom: 0; } li &gt; p { margin-top: 0; margin-bottom: 0; } dl { padding: 0; } dl dt { padding: 0; margin-top: 16px; font-size: 1em; font-style: italic; font-weight: bold; } dl dd { padding: 0 16px; margin-bottom: 16px; } blockquote { padding: 10px 10px 10px 16px; border-left: 2px solid; border-radius: 0 3px 3px 0; } blockquote &gt; :first-child { margin-top: 0; } blockquote &gt; :last-child { margin-bottom: 0; } table { display: block; width: 100%; overflow: auto; word-break: normal; border-collapse: collapse; border-spacing: 0; font-size: 1em; } table th { font-weight: bold; } table th, table td { padding: 6px 13px; background: transparent; } table tr { border-top: 1px solid; } img { max-width: 100%; box-sizing: border-box; } code { font: 0.9em "JetBrains Mono", Consolas, "Liberation Mono", Menlo, Courier, monospace; padding: 0.2em 0.4em; margin: 2px; border-radius: 3px; } pre &gt; code { padding: 0; margin: 0; font-size: 100%; word-break: normal; white-space: pre; background: transparent; border: 0; } .highlight { margin-bottom: 16px; } .highlight pre, pre { font: 0.85em "JetBrains Mono", Consolas, "Liberation Mono", Menlo, Courier, monospace; padding: 16px; overflow: auto; line-height: 1.45; border-radius: 3px; } pre code { display: inline; max-width: initial; padding: 0; margin: 0; overflow: initial; line-height: inherit; word-wrap: normal; background-color: transparent; border: 0; } pre code:before, pre code:after { content: normal; } kbd { font: 0.9em "JetBrains Mono", Consolas, "Liberation Mono", Menlo, Courier, monospace; padding: 0.2em 0.4em; margin: 2px; border-radius: 3px; } .task-list-item { list-style-type: none; } .task-list-item + .task-list-item { margin-top: 3px; } .task-list-item input { margin: 0 0.35em 0.25em -0.6em; vertical-align: middle; } :checked + .radio-label { z-index: 1; position: relative; } span.user-del { text-decoration: line-through; } ::-webkit-scrollbar { width: 6px; height: 6px; } ::-webkit-scrollbar-thumb { -webkit-border-radius: 10px; } ::-webkit-scrollbar-track:vertical { -webkit-box-shadow: -1px 0 0 #ededed; } ::-webkit-scrollbar-track { background-color: transparent; } ::-webkit-scrollbar { width: 6px; }</style>
+  <style>:root { --default-font-size: 18px; } body { background-color: rgba(255, 255, 255, 255.0); font-size: var(--default-font-size) !important; } body, p, blockquote, ul, ol, dl, table, pre, code, tr { color: rgba(8, 8, 8, 255.0); } a { color: rgba(49, 95, 189, 255.0); } table td, table th { border: 1px solid rgba(235, 236, 240, 255.0); } hr { background-color: rgba(235, 236, 240, 255.0); } kbd, tr { border: 1px solid rgba(235, 236, 240, 255.0); } h6 { color: rgba(129, 133, 148, 255.0); } blockquote { border-left: 2px solid rgba(49, 95, 189, 0.4); } blockquote, code, pre { background-color: rgba(212, 222, 231, 0.24705882352941178); } ::-webkit-scrollbar { width: 8px; height: 8px; background-color: rgba(0, 0, 0, 0); } ::-webkit-scrollbar-track { background-color: rgba(0, 0, 0, 0); } ::-webkit-scrollbar-track:hover { background-color: rgba(0, 0, 0, 0); } ::-webkit-scrollbar-thumb { background-color: rgba(115, 115, 115, 0.200000); border-radius: 0px; border-width: 1px; border-style: solid; border-color: rgba(0, 0, 0, 0); background-clip: padding-box; outline: 1px solid rgba(89, 89, 89, 0.200000); outline-offset: -1px; } ::-webkit-scrollbar-thumb:hover { background-color: rgba(115, 115, 115, 0.278431); border-radius: 0px; border-width: 1px; border-style: solid; border-color: rgba(0, 0, 0, 0); background-clip: padding-box; outline: 1px solid rgba(89, 89, 89, 0.278431); outline-offset: -1px; } ::-webkit-scrollbar-corner { background-color: rgba(0, 0, 0, 0); } ::-webkit-scrollbar-button { display:none; }</style>
+  <style>/* Copyright 2000-2021 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. */ .code-fence-highlighter-copy-button { display: flex; position: absolute; float: left; margin-left: -1em; margin-top: -1em; } .code-fence-highlighter-copy-button-icon { visibility: hidden; max-width: 1em; } .code-fence:hover .code-fence-highlighter-copy-button-icon { visibility: visible; /*noinspection CssUnknownTarget*/ content: url("copy-button-copy-icon.png"); } .code-fence:hover .code-fence-highlighter-copy-button:hover .code-fence-highlighter-copy-button-icon { /*noinspection CssUnknownTarget*/ content: url("copy-button-copy-icon-hovered.png"); cursor: pointer; } .code-fence-highlighter-copy-button .tooltiptext { visibility: hidden; width: 120px; background-color: rgba(85, 85, 85, 0.4); color: #fff; text-align: center; border-radius: 6px; padding: 2px 0; position: absolute; font-size: 10px; z-index: 1; top: -4px; left: 120%; opacity: 0; transition: opacity 0.3s; } .code-fence-highlighter-copy-button:hover .tooltiptext { visibility: visible; opacity: 1; }</style>
+  <style>/* Copyright 2000-2021 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. */ .run-icon &gt; img { max-width: 1em; vertical-align: text-top; margin-right: 0.3em; } .code-block { position: absolute; left: 1em; } .hidden { display: none; }</style>
+ </head>
+ <body>
+  <div md-src-pos="0..12482">
+   <h1 id="skewb-solver-monte-carlo" md-src-pos="0..28">Skewb Solver (Monte Carlo)</h1>
+   <h2 id="4061-project-b-report" md-src-pos="29..53">4061 Project B report</h2>
+   <h2 id="content" md-src-pos="55..65">Content</h2>
+   <ol md-src-pos="67..1024">
+    <li md-src-pos="67..113"><a href="#1-about-the-project" md-src-pos="70..111">About the project</a></li>
+    <li md-src-pos="114..240"><a href="#2-getting-started" md-src-pos="117..154">Getting Started</a><br>
+      i. <a href="#2-i-installation" md-src-pos="163..196">Installation</a><br>
+      ii. <a href="#2-ii-preparation" md-src-pos="206..238">Preparation</a></li>
+    <li md-src-pos="241..263"><a href="#3-usage" md-src-pos="244..261">Usage</a></li>
+    <li md-src-pos="264..312"><a href="#4-more-customisation" md-src-pos="267..310">More Customisation</a></li>
+    <li md-src-pos="313..826"><a href="#5-how-this-programme-works" md-src-pos="316..371">How this Programme Works</a><br>
+      i. <a href="#5-i-understanding-mechanism-of-the-skewb" md-src-pos="380..461">Understanding Mechanism of the Skewb</a><br>
+      ii. <a href="#5-ii-defining-the-state-of-the-skewb" md-src-pos="471..543">Defining the State of the Skewb</a><br>
+      iii. <a href="#5-iii-defining-turns" md-src-pos="554..593">Defining Turns</a><br>
+      iv. <a href="#5-iv-gods-number" md-src-pos="603..636">God's Number</a><br>
+      v. <a href="#5-v-monte-carlo" md-src-pos="645..676">Monte Carlo</a><br>
+      vi. <a href="#5-vi-colour-recognition" md-src-pos="686..732">Colour Recognition</a><br>
+      vii. <a href="#5-vii-inputting-colour-with-python-script" md-src-pos="743..824">Inputting Colour with Python Script</a></li>
+    <li md-src-pos="827..993"><a href="#6-finding-fewest-moves-solution" md-src-pos="830..895">Finding Fewest Moves Solution</a><br>
+      i. <a href="#6-i-finding-fewest-moves-solution-for-carter" md-src-pos="904..993">Finding Fewest Moves Solution for Carter</a></li>
+    <li md-src-pos="994..1024"><a href="#7-reference" md-src-pos="997..1022">Reference</a></li>
+   </ol>
+   <hr>
+   <h2 id="1-about-the-project" md-src-pos="1031..1054">1. About the Project</h2>
+   <p md-src-pos="1056..1177"><span md-src-pos="1056..1117">This programme allows user to capture all sides of the skewb,</span> <span md-src-pos="1118..1177">and solve it with the algorithm found by using Monte Carlo.</span></p>
+   <h2 id="2-getting-started" md-src-pos="1179..1200">2. Getting Started</h2>
+   <h3 id="2-i-installation" md-src-pos="1202..1224">2. i. Installation</h3>
+   <p md-src-pos="1226..1318"><span md-src-pos="1226..1265">To be able to run the python programme,</span> <span md-src-pos="1266..1289">you need to have numpy,</span> <span md-src-pos="1290..1318">Pillow and OpenCV installed.</span></p>
+   <ul md-src-pos="1320..1462">
+    <li md-src-pos="1320..1362">
+     <p md-src-pos="1322..1327">numpy</p>
+     <pre class="code-fence" md-src-pos="1330..1362"><div class="code-fence-highlighter-copy-button" data-fence-content="cGlwIGluc3RhbGwgbnVtcHk=">
+  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/1655788167/?_ijt=v9lolgqkg0qofgsv9m60us81pq">
+  <span class="tooltiptext">Copy to clipboard</span>
+</div><code class="language-cmd" md-src-pos="1330..1362"><span md-src-pos="1330..1337"></span><span md-src-pos="1337..1355">pip install numpy
+</span><span md-src-pos="1357..1362"></span></code></pre></li>
+    <li md-src-pos="1366..1410">
+     <p md-src-pos="1368..1374">Pillow</p>
+     <pre class="code-fence" md-src-pos="1377..1410"><div class="code-fence-highlighter-copy-button" data-fence-content="cGlwIGluc3RhbGwgcGlsbG93">
+  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/1655788167/?_ijt=v9lolgqkg0qofgsv9m60us81pq">
+  <span class="tooltiptext">Copy to clipboard</span>
+</div><code class="language-cmd" md-src-pos="1377..1410"><span md-src-pos="1377..1384"></span><span md-src-pos="1384..1403">pip install pillow
+</span><span md-src-pos="1405..1410"></span></code></pre></li>
+    <li md-src-pos="1411..1462">
+     <p md-src-pos="1413..1419">OpenCV</p>
+     <pre class="code-fence" md-src-pos="1422..1462"><div class="code-fence-highlighter-copy-button" data-fence-content="cGlwIGluc3RhbGwgb3BlbmN2LXB5dGhvbg==">
+  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/1655788167/?_ijt=v9lolgqkg0qofgsv9m60us81pq">
+  <span class="tooltiptext">Copy to clipboard</span>
+</div><code class="language-cmd" md-src-pos="1422..1462"><span md-src-pos="1422..1429"></span><span md-src-pos="1429..1455">pip install opencv-python
+</span><span md-src-pos="1457..1462"></span></code></pre></li>
+   </ul>
+   <h3 id="2-ii-preparation" md-src-pos="1464..1486">2. ii. Preparation</h3>
+   <p md-src-pos="1487..1546"><span md-src-pos="1487..1546">Please put all the files and folders in the same directory.</span></p>
+   <p md-src-pos="1548..1711"><span md-src-pos="1548..1590">The colour input is done by python opencv,</span> <span md-src-pos="1591..1636">and the skewb algorithm finder is done in C++</span> <span md-src-pos="1637..1655">using Monte Carlo.</span> <span md-src-pos="1656..1666">Therefore,</span> <span md-src-pos="1667..1700">you need to first compile the C++</span> <span md-src-pos="1701..1711">programme.</span></p>
+   <ul md-src-pos="1712..1788">
+    <li md-src-pos="1712..1788">Compile the C++ script
+     <pre class="code-fence" md-src-pos="1739..1788"><div class="code-fence-highlighter-copy-button" data-fence-content="ZysrIHNrZXdiX3NvbHV0aW9uX2ZpbmRlci5jcHAgLW8gYQ==">
+  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/1655788167/?_ijt=v9lolgqkg0qofgsv9m60us81pq">
+  <span class="tooltiptext">Copy to clipboard</span>
+</div><code class="language-cmd" md-src-pos="1739..1788"><span md-src-pos="1739..1746"></span><span md-src-pos="1746..1781">g++ skewb_solution_finder.cpp -o a
+</span><span md-src-pos="1783..1788"></span></code></pre></li>
+   </ul>
+   <p md-src-pos="1790..1881"><span md-src-pos="1790..1795">Then,</span> <span md-src-pos="1796..1850">after you scanned the cube using the python programme,</span> <span md-src-pos="1851..1881">it will run the compiled file.</span></p>
+   <p md-src-pos="1883..1948"><span md-src-pos="1883..1947">This programme requires you to connect a webcam to the computer,</span></p>
+   <ul md-src-pos="1950..2203">
+    <li md-src-pos="1950..2077">
+     <p md-src-pos="1952..2031">Change the webcam number in the code in line 8 of skewb_solver.py if necessary.</p>
+     <pre class="code-fence" md-src-pos="2034..2077"><div class="code-fence-highlighter-copy-button" data-fence-content="Y2FwID0gY3YyLlZpZGVvQ2FwdHVyZSgwKQ==">
+  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/1655788167/?_ijt=v9lolgqkg0qofgsv9m60us81pq">
+  <span class="tooltiptext">Copy to clipboard</span>
+</div><code class="language-python" md-src-pos="2034..2077"><span md-src-pos="2034..2044"></span><span md-src-pos="2044..2067">cap = cv2.VideoCapture(</span><span md-src-pos="2067..2068" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="2068..2070">)
+</span><span md-src-pos="2072..2077"></span></code></pre></li>
+    <li md-src-pos="2079..2203">
+     <p md-src-pos="2081..2143">If you are using a linux system, change the code as following.</p>
+     <pre class="code-fence" md-src-pos="2146..2203"><div class="code-fence-highlighter-copy-button" data-fence-content="Y2FwID0gY3YyLlZpZGVvQ2FwdHVyZSgwLCBjdjIuQ0FQX1Y0TDIp">
+  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/1655788167/?_ijt=v9lolgqkg0qofgsv9m60us81pq">
+  <span class="tooltiptext">Copy to clipboard</span>
+</div><code class="language-python" md-src-pos="2146..2203"><span md-src-pos="2146..2156"></span><span md-src-pos="2156..2179">cap = cv2.VideoCapture(</span><span md-src-pos="2179..2180" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="2180..2196">, cv2.CAP_V4L2)
+</span><span md-src-pos="2198..2203"></span></code></pre></li>
+   </ul>
+   <h2 id="3-usage" md-src-pos="2205..2216">3. Usage</h2>
+   <p md-src-pos="2217..2710"><span md-src-pos="2217..2236">The main code is in</span> <strong md-src-pos="2237..2256">skewb_solver.py</strong><span md-src-pos="2256..2257">.</span> <span md-src-pos="2258..2313">Run this python script and scan each face of the skewb.</span> <span md-src-pos="2314..2338">When you scan the skewb,</span> <span md-src-pos="2339..2439">you have to first find the white-green-red corner and place it at bottom right with white facing up.</span> <span md-src-pos="2440..2470">Press enter to capture a face,</span> <span md-src-pos="2471..2567">then follow the animation in the OpenCV preview window to rotate the cube to scan the next face.</span> <span md-src-pos="2568..2617">Should you have any difficulty scanning the cube,</span> <span md-src-pos="2618..2646">you could take a look at the</span> <a href="https://youtu.be/f4b-0wV-rUE?si=kuiRMmu7Bn71bkcC" md-src-pos="2647..2709">demo video</a><span md-src-pos="2709..2710">.</span></p><iframe width="640" height="360" src="https://www.youtube.com/embed/f4b-0wV-rUE" title="Skewb solver programme demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> </iframe>
+   <p md-src-pos="3030..3273"><span md-src-pos="3030..3055">After scanning all faces,</span> <span md-src-pos="3056..3109">the python programme will return the skewb algorithm.</span> <span md-src-pos="3110..3164">The skewb algorithm follows the WCA standard notation.</span> <span md-src-pos="3165..3214">Please refer to quick guide to WCA skewb notation</span> <a href="https://youtu.be/V7M_IKuUREs?si=tjRuOQzYD4ZzFDXb" md-src-pos="3215..3272">video</a><span md-src-pos="3272..3273">.</span></p>
+   <p md-src-pos="3275..3596"><iframe width="640" height="360" src="https://www.youtube.com/embed/V7M_IKuUREs" title="Quick Guide to WCA Skewb Notation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
+   <p md-src-pos="3598..3796"><span md-src-pos="3598..3601">Or,</span> <span md-src-pos="3602..3732">you could just click the link in the terminal under the skewb algorithm for the animation of showing the algorithm as shown in the</span> <a href="https://youtu.be/f4b-0wV-rUE?si=kuiRMmu7Bn71bkcC" md-src-pos="3733..3795">demo video</a><span md-src-pos="3795..3796">.</span></p>
+   <h2 id="4-more-customisation" md-src-pos="3798..3822">4. More Customisation</h2>
+   <p md-src-pos="3824..4029"><span md-src-pos="3824..3827">Let</span>'<span md-src-pos="3828..3855">s say you are right handed,</span> <span md-src-pos="3856..3914">you might want an algorithm that contain less lefty moves.</span> <span md-src-pos="3915..4028">You could actually tune the ratio of the probability of the type of turns that come up in Monte Carlo simulation.</span></p>
+   <ul md-src-pos="4031..4337">
+    <li md-src-pos="4031..4226">Tune the numbers in line 8 of <strong md-src-pos="4063..4092">skewb_solution_finder.cpp</strong>. The numbers in array mean the probability of R showing up to L to U to B respectively.
+     <pre class="code-fence" md-src-pos="4183..4226"><div class="code-fence-highlighter-copy-button" data-fence-content="aW50IHJhdGlvWzRdID0gezEsIDEsIDEsIDF9Ow==">
+  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/1655788167/?_ijt=v9lolgqkg0qofgsv9m60us81pq">
+  <span class="tooltiptext">Copy to clipboard</span>
+</div><code class="language-cpp" md-src-pos="4183..4226"><span md-src-pos="4183..4190"></span><span md-src-pos="4190..4219">int ratio[4] = {1, 1, 1, 1};
+</span><span md-src-pos="4221..4226"></span></code></pre></li>
+    <li md-src-pos="4227..4337">If you change the array to {3, 1, 1, 1}, R moves will come up 3 times more frequently than L, U and B moves.</li>
+   </ul>
+   <h2 id="5-how-this-programme-works" md-src-pos="4339..4369">5. How this Programme Works</h2>
+   <p md-src-pos="4371..4827"><span md-src-pos="4371..4377">In the</span> <strong md-src-pos="4378..4407">skewb_solution_finder.cpp</strong><span md-src-pos="4407..4408">,</span> <span md-src-pos="4409..4456">I defined the state of the skewb using 3 arrays</span> (<span md-src-pos="4458..4481">will be explained later</span>)<span md-src-pos="4482..4483">.</span> <span md-src-pos="4484..4522">When you compiled and run this script,</span> <span md-src-pos="4523..4566">you need to find the white-green-red corner</span> (<span md-src-pos="4568..4597">I will also explain why later</span>)<span md-src-pos="4598..4599">,</span> <span md-src-pos="4600..4619">and place in front,</span> <span md-src-pos="4620..4653">with white on top as shown below,</span> <span md-src-pos="4654..4712">then input the colours one by one in the order shown below</span> (<span md-src-pos="4714..4738">note that if you use run</span> <strong md-src-pos="4739..4758">skewb_solver.py</strong> <span md-src-pos="4759..4777">and scan the cube,</span> <span md-src-pos="4778..4825">it will automatically input the colours for you</span>)<span md-src-pos="4826..4827">.</span></p>
+   <ul md-src-pos="4829..4913">
+    <li md-src-pos="4829..4913">Input w for white, g for green, r for red, b for blue, o for orange, y for yellow.</li>
+   </ul>
+   <table md-src-pos="4915..5037">
+    <thead>
+     <tr md-src-pos="4915..4927">
+      <th align="center" md-src-pos="4916..4921">Front</th>
+      <th align="center" md-src-pos="4922..4926">Back</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr md-src-pos="4942..5037">
+      <td align="center" md-src-pos="4943..4990"><img src="http://localhost:63342/markdownPreview/1655788167/README_picture/order_front.jpeg?_ijt=v9lolgqkg0qofgsv9m60us81pq" alt="orderfront" __idea-generated="true" md-src-pos="4943..4990" data-original-src="README_picture/order_front.jpeg"></td>
+      <td align="center" md-src-pos="4991..5036"><img src="http://localhost:63342/markdownPreview/1655788167/README_picture/order_back.jpeg?_ijt=v9lolgqkg0qofgsv9m60us81pq" alt="orderback" __idea-generated="true" md-src-pos="4991..5036" data-original-src="README_picture/order_back.jpeg"></td>
+     </tr>
+    </tbody>
+   </table>
+   <p md-src-pos="5039..5136"><span md-src-pos="5039..5127">Then there is a function that converts the colours to the 3 arrays that define the skewb</span>'<span md-src-pos="5128..5136">s state.</span></p>
+   <h3 id="5-i-understanding-mechanism-of-the-skewb" md-src-pos="5138..5184">5. i. Understanding Mechanism of the Skewb</h3>
+   <table md-src-pos="5186..5404">
+    <thead>
+     <tr md-src-pos="5186..5229">
+      <th align="center" md-src-pos="5187..5194">Centres</th>
+      <th align="center" md-src-pos="5195..5211">Attached corners</th>
+      <th align="center" md-src-pos="5212..5228">Floating corners</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr md-src-pos="5250..5404">
+      <td align="center" md-src-pos="5251..5289"><img src="http://localhost:63342/markdownPreview/1655788167/README_picture/centres.png?_ijt=v9lolgqkg0qofgsv9m60us81pq" alt="centres" __idea-generated="true" md-src-pos="5251..5289" data-original-src="README_picture/centres.png"></td>
+      <td align="center" md-src-pos="5290..5346"><img src="http://localhost:63342/markdownPreview/1655788167/README_picture/attached_corners.png?_ijt=v9lolgqkg0qofgsv9m60us81pq" alt="attachedcorners" __idea-generated="true" md-src-pos="5290..5346" data-original-src="README_picture/attached_corners.png"></td>
+      <td align="center" md-src-pos="5347..5403"><img src="http://localhost:63342/markdownPreview/1655788167/README_picture/floating_corners.png?_ijt=v9lolgqkg0qofgsv9m60us81pq" alt="floatingcorners" __idea-generated="true" md-src-pos="5347..5403" data-original-src="README_picture/floating_corners.png"></td>
+     </tr>
+    </tbody>
+   </table>
+   <p md-src-pos="5406..5831"><span md-src-pos="5406..5430">As shown in the figures,</span> <span md-src-pos="5431..5479">centre is the center piece with only one colour.</span> <span md-src-pos="5480..5524">Corner on the other hand contains 3 colours,</span> <span md-src-pos="5525..5557">and they are categorised into 2,</span> <span md-src-pos="5558..5575">attached corners,</span> <span md-src-pos="5576..5597">and floating corners.</span> <span md-src-pos="5598..5628">When you disassemble the cube,</span> <span md-src-pos="5629..5701">you will find that the attached corners are connected to the core piece,</span> <span md-src-pos="5702..5745">and their relative positions cannot change.</span> <span md-src-pos="5746..5781">Floating corners of the other hand,</span> <span md-src-pos="5782..5809">do not connect to the core,</span> <span md-src-pos="5810..5831">they can move around.</span></p>
+   <h3 id="5-ii-defining-the-state-of-the-skewb" md-src-pos="5833..5875">5. ii. Defining the State of the Skewb</h3>
+   <p md-src-pos="5877..5997"><span md-src-pos="5877..5932">Now that you understand the basic mechanism of a skewb,</span> <span md-src-pos="5933..5997">we can now try to understand how to define the state of a skewb.</span></p>
+   <p md-src-pos="5999..6368"><span md-src-pos="5999..6007">In fact,</span> <span md-src-pos="6008..6112">there are only 8 different kinds of individual turns of a skewb needed to attain any state of the skewb.</span> <span md-src-pos="6113..6128">In other words,</span> <span md-src-pos="6129..6202">only 8 different kinds of turns are needed to solve a skewb of any state.</span> <span md-src-pos="6203..6255">You could refer to quick guide to WCA skewb notation</span> <a href="https://youtu.be/V7M_IKuUREs?si=tjRuOQzYD4ZzFDXb" md-src-pos="6256..6313">video</a> <span md-src-pos="6314..6368">to learn the 8 different moves used in this programme.</span></p>
+   <p md-src-pos="6370..6758"><span md-src-pos="6370..6385">Coincidentally,</span> <span md-src-pos="6386..6465">if you put white-green-red corner in front with white facing up as shown in the</span> <a href="https://youtu.be/V7M_IKuUREs?si=tjRuOQzYD4ZzFDXb" md-src-pos="6466..6523">video</a><span md-src-pos="6523..6524">,</span> <span md-src-pos="6525..6585">all the 8 turns will not affect this white-green-red corner.</span> <span md-src-pos="6586..6638">We can conveniently use this corner as anchor as our</span> "<span md-src-pos="6640..6652">virtual cube</span>" (<span md-src-pos="6655..6734">which means the programme will be based on the white-green-red corner in front,</span> <span md-src-pos="6735..6756">with white facing top</span>)<span md-src-pos="6757..6758">.</span></p>
+   <p md-src-pos="6760..6896"><span md-src-pos="6760..6793">The first array is called centres</span>[6]<span md-src-pos="6796..6797">,</span> <span md-src-pos="6798..6835">this defines the position of centres.</span> <span md-src-pos="6836..6896">The integers are mapped to different centres as shown below.</span></p>
+   <ul md-src-pos="6898..7022">
+    <li md-src-pos="6898..6918">0 --&gt; white centre</li>
+    <li md-src-pos="6919..6939">1 --&gt; green centre</li>
+    <li md-src-pos="6940..6958">2 --&gt; red centre</li>
+    <li md-src-pos="6959..6978">3 --&gt; blue centre</li>
+    <li md-src-pos="6979..7000">4 --&gt; orange centre</li>
+    <li md-src-pos="7001..7022">5 --&gt; yellow centre</li>
+   </ul>
+   <p md-src-pos="7024..7269"><span md-src-pos="7024..7112">First entry of the array stores the position that white centre should be at when solved,</span> <span md-src-pos="7113..7189">second entry stores the position that green centre should be at when solved,</span> <span md-src-pos="7190..7200">and so on.</span> <span md-src-pos="7201..7229">When the centres are solved,</span> <span md-src-pos="7230..7249">the array should be</span> <span md-src-pos="7250..7253">{0,</span> <span md-src-pos="7254..7256">1,</span> <span md-src-pos="7257..7259">2,</span> <span md-src-pos="7260..7262">3,</span> <span md-src-pos="7263..7265">4,</span> <span md-src-pos="7266..7269">5}.</span></p>
+   <p md-src-pos="7271..7417"><span md-src-pos="7271..7307">The second array is called corners_p</span>[7]<span md-src-pos="7310..7311">,</span> <span md-src-pos="7312..7356">this defines the permutation of the corners.</span> <span md-src-pos="7357..7417">The integers are mapped to different corners as shown below.</span></p>
+   <ul md-src-pos="7419..7647">
+    <li md-src-pos="7419..7451">0 --&gt; white-orange-blue corner</li>
+    <li md-src-pos="7452..7481">1 --&gt; white-red-blue corner</li>
+    <li md-src-pos="7482..7515">2 --&gt; white-green-orange corner</li>
+    <li md-src-pos="7516..7547">3 --&gt; yellow-green-red corner</li>
+    <li md-src-pos="7548..7578">4 --&gt; yellow-red-blue corner</li>
+    <li md-src-pos="7579..7612">5 --&gt; yellow-blue-orange corner</li>
+    <li md-src-pos="7613..7647">6 --&gt; yellow-green-orange corner</li>
+   </ul>
+   <p md-src-pos="7649..7933"><span md-src-pos="7649..7749">First entry of the array stores the position that white-orange-blue corner should be at when solved,</span> <span md-src-pos="7750..7835">second entry stores the position that white-red-blue corner should be at when solved,</span> <span md-src-pos="7836..7846">and so on.</span> <span md-src-pos="7847..7890">When the permutation of corners are solved,</span> <span md-src-pos="7891..7910">the array should be</span> <span md-src-pos="7911..7914">{0,</span> <span md-src-pos="7915..7917">1,</span> <span md-src-pos="7918..7920">2,</span> <span md-src-pos="7921..7923">3,</span> <span md-src-pos="7924..7926">4,</span> <span md-src-pos="7927..7929">5,</span> <span md-src-pos="7930..7933">6}.</span></p>
+   <p md-src-pos="7935..8504"><span md-src-pos="7935..7970">The third array is called corners_o</span>[7]<span md-src-pos="7973..7974">,</span> <span md-src-pos="7975..8019">this defines the orientation of the corners.</span> <span md-src-pos="8020..8072">Each corner must have either white or yellow colour,</span> <span md-src-pos="8073..8122">when the white or yellow colour faces up or down,</span> <span md-src-pos="8123..8138">the entry is 0,</span> <span md-src-pos="8139..8178">when it faces right-front or left-back,</span> <span md-src-pos="8179..8194">the input is 1,</span> <span md-src-pos="8195..8234">when it faces left-front or right-back,</span> <span md-src-pos="8235..8250">the input is 2.</span> <span md-src-pos="8251..8317">The first entry stores the orientation of white-orange-blue corner</span> (<span md-src-pos="8319..8327">0 corner</span>)<span md-src-pos="8328..8329">,</span> <span md-src-pos="8330..8394">the second entry stores the orientation of white-red-blue corner</span> (<span md-src-pos="8396..8404">1 corner</span>)<span md-src-pos="8405..8406">,</span> <span md-src-pos="8407..8417">and so on.</span> <span md-src-pos="8418..8461">When the orientation of corners are solved,</span> <span md-src-pos="8462..8481">the array should be</span> <span md-src-pos="8482..8485">{0,</span> <span md-src-pos="8486..8488">0,</span> <span md-src-pos="8489..8491">0,</span> <span md-src-pos="8492..8494">0,</span> <span md-src-pos="8495..8497">0,</span> <span md-src-pos="8498..8500">0,</span> <span md-src-pos="8501..8504">0}.</span></p>
+   <h3 id="5-iii-defining-turns" md-src-pos="8506..8532">5. iii. Defining Turns</h3>
+   <p md-src-pos="8534..8740"><span md-src-pos="8534..8562">There are 8 different turns,</span> <span md-src-pos="8563..8572">namely R,</span> <span md-src-pos="8573..8574">R</span>'<span md-src-pos="8575..8576">,</span> <span md-src-pos="8577..8579">L,</span> <span md-src-pos="8580..8581">L</span>'<span md-src-pos="8582..8583">,</span> <span md-src-pos="8584..8586">U,</span> <span md-src-pos="8587..8588">U</span>'<span md-src-pos="8589..8590">,</span> <span md-src-pos="8591..8598">B and B</span>'<span md-src-pos="8599..8600">.</span> <span md-src-pos="8601..8623">There are 8 functions,</span> <span md-src-pos="8624..8642">one for each turn.</span> <span md-src-pos="8643..8724">Each functions will apply necessary changes to the 3 arrays to do the turn to the</span> "<span md-src-pos="8726..8738">virtual cube</span>"<span md-src-pos="8739..8740">.</span></p>
+   <h3 id="5-iv-gods-number" md-src-pos="8742..8765">5. iv. God's Number</h3>
+   <p md-src-pos="8767..8882"><span md-src-pos="8767..8770">God</span>'<span md-src-pos="8771..8847">s number is the maximum number of turns needed to solve any state of a cube.</span> <span md-src-pos="8848..8858">For skewb,</span> <span md-src-pos="8859..8866">the God</span>'<span md-src-pos="8867..8882">s number is 11.</span></p>
+   <h3 id="5-v-monte-carlo" md-src-pos="8884..8905">5. v. Monte Carlo</h3>
+   <p md-src-pos="8907..9370"><span md-src-pos="8907..9009">This programme will then do random moves to the skewb and check whether it is solved after each moves.</span> <span md-src-pos="9010..9055">If solution is not found after doing 12 moves</span> (<span md-src-pos="9057..9079">one more move than God</span>'<span md-src-pos="9080..9088">s number</span>)<span md-src-pos="9089..9090">,</span> <span md-src-pos="9091..9128">it will search for another algorithm.</span> <span md-src-pos="9129..9180">The programme will avoid applying duplicated moves,</span> <span md-src-pos="9181..9203">such as R after R or R</span>'<span md-src-pos="9204..9205">.</span> <span md-src-pos="9206..9286">The Monte Carlo simulation will be based on the ratio set in line 8 of the code,</span> <span md-src-pos="9287..9370">and the probability of generating clockwise and counterclockwise turn are the same.</span></p>
+   <h3 id="5-vi-colour-recognition" md-src-pos="9372..9401">5. vi. Colour Recognition</h3>
+   <p md-src-pos="9403..9552"><span md-src-pos="9403..9451">The colour recognition is done by python opencv.</span> <span md-src-pos="9452..9481">For colours other than white,</span> <span md-src-pos="9482..9552">I allowed a range of hue and saturation shift from my defined colours.</span></p>
+   <pre class="code-fence" md-src-pos="9554..9739"><div class="code-fence-highlighter-copy-button" data-fence-content="ZGVmIGdldF9saW1pdHMoY29sb3VyKToKICAgICMuLi4KICAgIGxvd2VyX2xpbWl0ID0gaHN2Q1swXVswXVswXSAtIDEwLCAxMDAsIDEwMAogICAgdXBwZXJfbGltaXQgPSBoc3ZDWzBdWzBdWzBdICsgMTAsIDI1NSwgMjU1CiAgICAjLi4uCiAgICByZXR1cm4gbG93ZXJfbGltaXQsIHVwcGVyX2xpbWl0">
+  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/1655788167/?_ijt=v9lolgqkg0qofgsv9m60us81pq">
+  <span class="tooltiptext">Copy to clipboard</span>
+</div><code class="language-python" md-src-pos="9554..9739"><span md-src-pos="9554..9564"></span><span md-src-pos="9564..9567" style="color: rgb(0, 51, 179);">def</span><span md-src-pos="9567..9588"> get_limits(colour):
+</span><span md-src-pos="9588..9592">    </span><span md-src-pos="9592..9596" style="color: rgb(140, 140, 140);">#...</span><span md-src-pos="9596..9597">
+</span><span md-src-pos="9597..9620">    lower_limit = hsvC[</span><span md-src-pos="9620..9621" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="9621..9623">][</span><span md-src-pos="9623..9624" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="9624..9626">][</span><span md-src-pos="9626..9627" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="9627..9631">] - </span><span md-src-pos="9631..9633" style="color: rgb(23, 80, 235);">10</span><span md-src-pos="9633..9635">, </span><span md-src-pos="9635..9638" style="color: rgb(23, 80, 235);">100</span><span md-src-pos="9638..9640">, </span><span md-src-pos="9640..9643" style="color: rgb(23, 80, 235);">100</span><span md-src-pos="9643..9644">
+</span><span md-src-pos="9644..9667">    upper_limit = hsvC[</span><span md-src-pos="9667..9668" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="9668..9670">][</span><span md-src-pos="9670..9671" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="9671..9673">][</span><span md-src-pos="9673..9674" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="9674..9678">] + </span><span md-src-pos="9678..9680" style="color: rgb(23, 80, 235);">10</span><span md-src-pos="9680..9682">, </span><span md-src-pos="9682..9685" style="color: rgb(23, 80, 235);">255</span><span md-src-pos="9685..9687">, </span><span md-src-pos="9687..9690" style="color: rgb(23, 80, 235);">255</span><span md-src-pos="9690..9691">
+</span><span md-src-pos="9691..9695">    </span><span md-src-pos="9695..9699" style="color: rgb(140, 140, 140);">#...</span><span md-src-pos="9699..9700">
+</span><span md-src-pos="9700..9704">    </span><span md-src-pos="9704..9710" style="color: rgb(0, 51, 179);">return</span><span md-src-pos="9710..9736"> lower_limit, upper_limit
+</span><span md-src-pos="9736..9739"></span></code></pre>
+   <p md-src-pos="9741..9873"><span md-src-pos="9741..9763">In the above function,</span> <span md-src-pos="9764..9767">the</span> <span md-src-pos="9768..9775">-10 and</span> <span md-src-pos="9776..9800">+10 refers to hue shift,</span> <span md-src-pos="9801..9873">while 100 and 255 refers to minimum and maximum saturation respectively.</span></p>
+   <p md-src-pos="9875..10005"><span md-src-pos="9875..9892">For white colour,</span> <span md-src-pos="9893..9895">it</span>'<span md-src-pos="9896..9938">s not that meaningful to define hue shift.</span> <span md-src-pos="9939..9949">Therefore,</span> <span md-src-pos="9950..10005">I hard coded the lower and upper limit of white colour.</span></p>
+   <pre class="code-fence" md-src-pos="10007..10127"><div class="code-fence-highlighter-copy-button" data-fence-content="bG93ZXJfd2hpdGUsIHVwcGVyX3doaXRlID0gbnAuYXJyYXkoWzAsIDAsIDE1MF0sIGR0eXBlPW5wLnVpbnQ4KSwgbnAuYXJyYXkoWzE3OSwgNTUsIDI1NV0sIGR0eXBlPW5wLnVpbnQ4KQ==">
+  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/1655788167/?_ijt=v9lolgqkg0qofgsv9m60us81pq">
+  <span class="tooltiptext">Copy to clipboard</span>
+</div><code class="language-python" md-src-pos="10007..10127"><span md-src-pos="10007..10017"></span><span md-src-pos="10017..10054">lower_white, upper_white = np.array([</span><span md-src-pos="10054..10055" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="10055..10057">, </span><span md-src-pos="10057..10058" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="10058..10060">, </span><span md-src-pos="10060..10063" style="color: rgb(23, 80, 235);">150</span><span md-src-pos="10063..10093">], dtype=np.uint8), np.array([</span><span md-src-pos="10093..10096" style="color: rgb(23, 80, 235);">179</span><span md-src-pos="10096..10098">, </span><span md-src-pos="10098..10100" style="color: rgb(23, 80, 235);">55</span><span md-src-pos="10100..10102">, </span><span md-src-pos="10102..10105" style="color: rgb(23, 80, 235);">255</span><span md-src-pos="10105..10124">], dtype=np.uint8)
+</span><span md-src-pos="10124..10127"></span></code></pre>
+   <h3 id="5-vii-inputting-colour-with-python-script" md-src-pos="10129..10176">5. vii. Inputting Colour With Python Script</h3>
+   <pre class="code-fence" md-src-pos="10178..10416"><div class="code-fence-highlighter-copy-button" data-fence-content="cHJvY2VzcyA9IHN1YnByb2Nlc3MuUG9wZW4oWycuL2EnXSwgc3RkaW49c3VicHJvY2Vzcy5QSVBFLCBzdGRvdXQ9c3VicHJvY2Vzcy5QSVBFLCBzdGRlcnI9c3VicHJvY2Vzcy5QSVBFLCB0ZXh0PVRydWUpCm91dHB1dCwgZXJyb3IgPSBwcm9jZXNzLmNvbW11bmljYXRlKGlucHV0PWlucHV0X3N0cmluZykKaWYgZXJyb3I6CiAgICBwcmludChlcnJvcikKZWxzZToKICAgIHByaW50KG91dHB1dCk=">
+  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/1655788167/?_ijt=v9lolgqkg0qofgsv9m60us81pq">
+  <span class="tooltiptext">Copy to clipboard</span>
+</div><code class="language-python" md-src-pos="10178..10416"><span md-src-pos="10178..10188"></span><span md-src-pos="10188..10216">process = subprocess.Popen([</span><span md-src-pos="10216..10221" style="color: rgb(6, 125, 23);">'./a'</span><span md-src-pos="10221..10300">], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=</span><span md-src-pos="10300..10304" style="color: rgb(0, 51, 179);">True</span><span md-src-pos="10304..10306">)
+</span><span md-src-pos="10306..10362">output, error = process.communicate(input=input_string)
+</span><span md-src-pos="10362..10364" style="color: rgb(0, 51, 179);">if</span><span md-src-pos="10364..10372"> error:
+</span><span md-src-pos="10372..10389">    print(error)
+</span><span md-src-pos="10389..10393" style="color: rgb(0, 51, 179);">else</span><span md-src-pos="10393..10395">:
+</span><span md-src-pos="10395..10413">    print(output)
+</span><span md-src-pos="10413..10416"></span></code></pre>
+   <p md-src-pos="10418..10620"><span md-src-pos="10418..10431">At the end of</span> <strong md-src-pos="10432..10451">skewb_solver.py</strong><span md-src-pos="10451..10452">,</span> <span md-src-pos="10453..10468">it will run the</span> <strong md-src-pos="10469..10476">./a</strong> <span md-src-pos="10477..10490">compiled from</span> <strong md-src-pos="10491..10520">skewb_solution_finder.cpp</strong><span md-src-pos="10520..10521">,</span> <span md-src-pos="10522..10565">then it will input the colour of each side,</span> <span md-src-pos="10566..10609">capture and display the output from the C++</span> <span md-src-pos="10610..10620">programme.</span></p>
+   <h2 id="6-finding-fewest-moves-solution" md-src-pos="10622..10657">6. Finding Fewest Moves Solution</h2>
+   <p md-src-pos="10659..10842"><span md-src-pos="10659..10684">I added a for loop to the</span> <strong md-src-pos="10685..10714">skewb_solution_finder.cpp</strong> <span md-src-pos="10715..10752">to search for solution for 100 times,</span> <span md-src-pos="10753..10803">and return the solution with the fewest move count</span> (<span md-src-pos="10805..10813">saved to</span> <strong md-src-pos="10814..10840">fewest_move_finder.cpp</strong>)<span md-src-pos="10841..10842">.</span></p>
+   <h3 id="6-i-finding-fewest-moves-solution-for-carter" md-src-pos="10844..10894">6. i. Finding Fewest Moves Solution for Carter</h3>
+   <p md-src-pos="10895..11261"><span md-src-pos="10895..10974">Then I tried to find the moves needed to solve the 5 scrambles of Carter Kucala</span>'<span md-src-pos="10975..11042">s final round at Going Fast in Grandview 2024 using this programme.</span> <span md-src-pos="11043..11130">The reason I chose this average was because the last solve was the world record single,</span> <span md-src-pos="11131..11180">but he did not perform that well in other solves.</span> <span md-src-pos="11181..11212">The table below shows the time,</span> <span md-src-pos="11213..11222">scramble,</span> <span md-src-pos="11223..11261">number of moves found by my programme.</span></p>
+   <table md-src-pos="11263..11808">
+    <thead>
+     <tr md-src-pos="11263..11340">
+      <th align="center" md-src-pos="11264..11272">Solve</th>
+      <th align="center" md-src-pos="11273..11282">Result</th>
+      <th align="center" md-src-pos="11283..11313">Scramble (11 moves)</th>
+      <th align="center" md-src-pos="11314..11339">Fewest number of moves</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr md-src-pos="11419..11496">
+      <td align="center" md-src-pos="11420..11428">1</td>
+      <td align="center" md-src-pos="11429..11438">2.49</td>
+      <td align="center" md-src-pos="11439..11469">R B L’ U’ L’ R B’ R’ B R B</td>
+      <td align="center" md-src-pos="11470..11495">9</td>
+     </tr>
+     <tr class="intellij-row-even" md-src-pos="11497..11574">
+      <td align="center" md-src-pos="11498..11506">2</td>
+      <td align="center" md-src-pos="11507..11516">1.77</td>
+      <td align="center" md-src-pos="11517..11547">U L U’ B’ U’ B’ U’ L B U’ R’</td>
+      <td align="center" md-src-pos="11548..11573">9</td>
+     </tr>
+     <tr md-src-pos="11575..11652">
+      <td align="center" md-src-pos="11576..11584">3</td>
+      <td align="center" md-src-pos="11585..11594">3.32</td>
+      <td align="center" md-src-pos="11595..11625">U L B U’ B’ L’ B R’ B’ L U</td>
+      <td align="center" md-src-pos="11626..11651">7</td>
+     </tr>
+     <tr class="intellij-row-even" md-src-pos="11653..11730">
+      <td align="center" md-src-pos="11654..11662">4</td>
+      <td align="center" md-src-pos="11663..11672">4.65</td>
+      <td align="center" md-src-pos="11673..11703">R B’ U’ B U B L’ U B’ U R</td>
+      <td align="center" md-src-pos="11704..11729">8</td>
+     </tr>
+     <tr md-src-pos="11731..11808">
+      <td align="center" md-src-pos="11732..11740">5</td>
+      <td align="center" md-src-pos="11741..11750">0.75</td>
+      <td align="center" md-src-pos="11751..11781">B L R’ B’ L U B’ R U’ R U</td>
+      <td align="center" md-src-pos="11782..11807">8</td>
+     </tr>
+    </tbody>
+   </table>
+   <p md-src-pos="11810..12058"><span md-src-pos="11810..11829">For the last solve,</span> <span md-src-pos="11830..11863">he did find the 8 moves solution.</span> <span md-src-pos="11864..11872">However,</span> <span md-src-pos="11873..11930">he did not find the 7 moves solution for the third solve.</span> <span md-src-pos="11931..11996">This shows that the current method that the top solvers are using</span> (<span md-src-pos="11998..12010">NS algorithm</span>) <span md-src-pos="12012..12058">is unable to attain the fewest moves solution.</span></p>
+   <p md-src-pos="12060..12247"><span md-src-pos="12060..12062">It</span>'<span md-src-pos="12063..12162">s also worth noting that the third fastest solve was done by Simon Kellum in this same competition,</span> <span md-src-pos="12163..12189">solving that same scramble</span>! <span md-src-pos="12191..12247">This shows that luck really play a role in skewb solves.</span></p>
+   <h2 id="7-reference" md-src-pos="12249..12264">7. Reference</h2>
+   <p md-src-pos="12266..12288"><span md-src-pos="12266..12287">External library used</span>:</p>
+   <ul md-src-pos="12289..12327">
+    <li md-src-pos="12289..12296">numpy</li>
+    <li md-src-pos="12297..12305">Pillow</li>
+    <li md-src-pos="12306..12314">OpenCV</li>
+    <li md-src-pos="12315..12327">Matplotlib</li>
+   </ul>
+   <p md-src-pos="12329..12481"><span md-src-pos="12329..12363">Website used to animate algorithms</span>: <a href="https://alpha.twizzle.net/edit/?puzzle=skewb" md-src-pos="12365..12409">https://alpha.twizzle.net/edit/?puzzle=skewb</a><br><span md-src-pos="12412..12438">Github page of the website</span>: <a href="https://github.com/cubing/alg.cubing.net" md-src-pos="12440..12480">https://github.com/cubing/alg.cubing.net</a></p>
+  </div>
+ </body>
+</html>
