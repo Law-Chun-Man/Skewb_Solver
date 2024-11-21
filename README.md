@@ -18,6 +18,7 @@
    6. [Colour Recognition](#5-vi-colour-recognition)  
    7. [Inputting Colour with Python Script](#5-vii-inputting-colour-with-python-script)  
 6. [Finding Fewest Moves Solution](#6-finding-fewest-moves-solution)  
+    1. [Finding Fewest Moves Solution for Carter](#6-i-finding-fewest-moves-solution-for-carter)
 7. [Reference](#7-reference)  
 
 ---
@@ -193,6 +194,7 @@ At the end of **skewb_solver.py**, it will run the **./a** compiled from **skewb
 
 I added a for loop to the **skewb_solution_finder.cpp** to search for solution for 100 times, and return the solution with the fewest move count (saved to **fewest_move_finder.cpp**).
 
+### 6. i. Finding Fewest Moves Solution for Carter
 Then I tried to find the moves needed to solve the 5 scrambles of Carter Kucala's final round at Going Fast in Grandview 2024 using this programme. The reason I chose this average was because the last solve was the world record single, but he did not perform that well in other solves. The table below shows the time, scramble, number of moves found by my programme.
 
 | Solve  | Result  |     Scramble (11 moves)      | Fewest number of moves  |
