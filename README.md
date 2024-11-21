@@ -20,6 +20,8 @@
 6. [Finding Fewest Moves Solution](#6-finding-fewest-moves-solution)  
 7. [Reference](#7-reference)  
 
+---
+
 ## 1. About the Project
 
 This programme allows user to capture all sides of the skewb, and solve it with the algorithm found by using Monte Carlo.
