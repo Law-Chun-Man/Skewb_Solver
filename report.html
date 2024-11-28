@@ -187,265 +187,390 @@ mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
   <style>/* Copyright 2000-2021 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. */ .run-icon &gt; img { max-width: 1em; vertical-align: text-top; margin-right: 0.3em; } .code-block { position: absolute; left: 1em; } .hidden { display: none; }</style>
  </head>
  <body>
-  <div md-src-pos="0..12908">
-   <h1 id="skewb-solver-monte-carlo" md-src-pos="0..28">Skewb Solver (Monte Carlo)</h1>
-   <h2 id="4061-project-b-report" md-src-pos="29..53">4061 Project B report</h2>
-   <h2 id="content" md-src-pos="55..65">Content</h2>
-   <ol md-src-pos="67..1059">
-    <li md-src-pos="67..113"><a href="#1-about-the-project" md-src-pos="70..111">About the project</a></li>
-    <li md-src-pos="114..240"><a href="#2-getting-started" md-src-pos="117..154">Getting Started</a><br>
-      i. <a href="#2-i-installation" md-src-pos="163..196">Installation</a><br>
-      ii. <a href="#2-ii-preparation" md-src-pos="206..238">Preparation</a></li>
-    <li md-src-pos="241..263"><a href="#3-usage" md-src-pos="244..261">Usage</a></li>
-    <li md-src-pos="264..312"><a href="#4-more-customisation" md-src-pos="267..310">More Customisation</a></li>
-    <li md-src-pos="313..826"><a href="#5-how-this-programme-works" md-src-pos="316..371">How this Programme Works</a><br>
-      i. <a href="#5-i-understanding-mechanism-of-the-skewb" md-src-pos="380..461">Understanding Mechanism of the Skewb</a><br>
-      ii. <a href="#5-ii-defining-the-state-of-the-skewb" md-src-pos="471..543">Defining the State of the Skewb</a><br>
-      iii. <a href="#5-iii-defining-turns" md-src-pos="554..593">Defining Turns</a><br>
-      iv. <a href="#5-iv-gods-number" md-src-pos="603..636">God's Number</a><br>
-      v. <a href="#5-v-monte-carlo" md-src-pos="645..676">Monte Carlo</a><br>
-      vi. <a href="#5-vi-colour-recognition" md-src-pos="686..732">Colour Recognition</a><br>
-      vii. <a href="#5-vii-inputting-colour-with-python-script" md-src-pos="743..824">Inputting Colour with Python Script</a></li>
-    <li md-src-pos="827..993"><a href="#6-finding-fewest-moves-solution" md-src-pos="830..895">Finding Fewest Moves Solution</a><br>
-      i. <a href="#6-i-finding-fewest-moves-solution-for-carter" md-src-pos="904..993">Finding Fewest Moves Solution for Carter</a></li>
-    <li md-src-pos="994..1028"><a href="#7-future-works" md-src-pos="997..1028">Future Works</a></li>
-    <li md-src-pos="1029..1059"><a href="#7-reference" md-src-pos="1032..1057">Reference</a></li>
+  <div md-src-pos="0..16777">
+   <h1 id="skewb-solver-monte-carlo" md-src-pos="1..29">Skewb Solver (Monte Carlo)</h1>
+   <h2 id="4061-project-b-report" md-src-pos="30..54">4061 Project B report</h2>
+   <h2 id="content" md-src-pos="56..66">Content</h2>
+   <ol md-src-pos="68..1304">
+    <li md-src-pos="68..114"><a href="#1-about-the-project" md-src-pos="71..112">About the project</a></li>
+    <li md-src-pos="115..241"><a href="#2-getting-started" md-src-pos="118..155">Getting Started</a><br>
+      i. <a href="#2-i-installation" md-src-pos="164..197">Installation</a><br>
+      ii. <a href="#2-ii-preparation" md-src-pos="207..239">Preparation</a></li>
+    <li md-src-pos="242..264"><a href="#3-usage" md-src-pos="245..262">Usage</a></li>
+    <li md-src-pos="265..313"><a href="#4-more-customisation" md-src-pos="268..311">More Customisation</a></li>
+    <li md-src-pos="314..827"><a href="#5-how-this-programme-works" md-src-pos="317..372">How this Programme Works</a><br>
+      i. <a href="#5-i-understanding-mechanism-of-the-skewb" md-src-pos="381..462">Understanding Mechanism of the Skewb</a><br>
+      ii. <a href="#5-ii-defining-the-state-of-the-skewb" md-src-pos="472..544">Defining the State of the Skewb</a><br>
+      iii. <a href="#5-iii-defining-turns" md-src-pos="555..594">Defining Turns</a><br>
+      iv. <a href="#5-iv-gods-number" md-src-pos="604..637">God's Number</a><br>
+      v. <a href="#5-v-monte-carlo" md-src-pos="646..677">Monte Carlo</a><br>
+      vi. <a href="#5-vi-colour-recognition" md-src-pos="687..733">Colour Recognition</a><br>
+      vii. <a href="#5-vii-inputting-colour-with-python-script" md-src-pos="744..825">Inputting Colour with Python Script</a></li>
+    <li md-src-pos="828..1238"><a href="#6-more-statistics" md-src-pos="831..868">More Statistics</a><br>
+      i. <a href="#6-i-finding-fewest-moves-solution-for-carter" md-src-pos="877..966">Finding Fewest Moves Solution for Carter</a><br>
+      ii. <a href="#6-ii-average-iterations-needed-to-find-the-solutions-and-the-average-moves-of-the-solutions" md-src-pos="976..1158">Average Iterations Needed to Find the Solutions and the Average Moves of the Solutions</a><br>
+      iii. <a href="#6-iii-giving-hints-to-the-programme" md-src-pos="1169..1238">Giving Hints to the Programme</a></li>
+    <li md-src-pos="1239..1273"><a href="#7-future-works" md-src-pos="1242..1273">Future Works</a></li>
+    <li md-src-pos="1274..1304"><a href="#8-reference" md-src-pos="1277..1302">Reference</a></li>
    </ol>
    <hr>
-   <h2 id="1-about-the-project" md-src-pos="1066..1089">1. About the Project</h2>
-   <p md-src-pos="1091..1212"><span md-src-pos="1091..1152">This programme allows user to capture all sides of the skewb,</span> <span md-src-pos="1153..1212">and solve it with the algorithm found by using Monte Carlo.</span></p>
-   <h2 id="2-getting-started" md-src-pos="1214..1235">2. Getting Started</h2>
-   <h3 id="2-i-installation" md-src-pos="1237..1259">2. i. Installation</h3>
-   <p md-src-pos="1261..1353"><span md-src-pos="1261..1300">To be able to run the python programme,</span> <span md-src-pos="1301..1324">you need to have numpy,</span> <span md-src-pos="1325..1353">Pillow and OpenCV installed.</span></p>
-   <ul md-src-pos="1355..1497">
-    <li md-src-pos="1355..1397">
-     <p md-src-pos="1357..1362">numpy</p>
-     <pre class="code-fence" md-src-pos="1365..1397"><div class="code-fence-highlighter-copy-button" data-fence-content="cGlwIGluc3RhbGwgbnVtcHk=">
-  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/115851737/?_ijt=g346qner59d16csdfm0g3cl3cu">
+   <h2 id="1-about-the-project" md-src-pos="1311..1334">1. About the Project</h2>
+   <p md-src-pos="1336..1457"><span md-src-pos="1336..1397">This programme allows user to capture all sides of the skewb,</span> <span md-src-pos="1398..1457">and solve it with the algorithm found by using Monte Carlo.</span></p>
+   <h2 id="2-getting-started" md-src-pos="1459..1480">2. Getting Started</h2>
+   <h3 id="2-i-installation" md-src-pos="1482..1504">2. i. Installation</h3>
+   <p md-src-pos="1506..1598"><span md-src-pos="1506..1545">To be able to run the python programme,</span> <span md-src-pos="1546..1569">you need to have numpy,</span> <span md-src-pos="1570..1598">Pillow and OpenCV installed.</span></p>
+   <ul md-src-pos="1600..1742">
+    <li md-src-pos="1600..1642">
+     <p md-src-pos="1602..1607">numpy</p>
+     <pre class="code-fence" md-src-pos="1610..1642"><div class="code-fence-highlighter-copy-button" data-fence-content="cGlwIGluc3RhbGwgbnVtcHk=">
+  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/1936059872/?_ijt=upbao5hoe6vdenoa3sang3hjgo">
   <span class="tooltiptext">Copy to clipboard</span>
-</div><code class="language-cmd" md-src-pos="1365..1397"><span md-src-pos="1365..1372"></span><span md-src-pos="1372..1390">pip install numpy
-</span><span md-src-pos="1392..1397"></span></code></pre></li>
-    <li md-src-pos="1401..1445">
-     <p md-src-pos="1403..1409">Pillow</p>
-     <pre class="code-fence" md-src-pos="1412..1445"><div class="code-fence-highlighter-copy-button" data-fence-content="cGlwIGluc3RhbGwgcGlsbG93">
-  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/115851737/?_ijt=g346qner59d16csdfm0g3cl3cu">
+</div><code class="language-cmd" md-src-pos="1610..1642"><span md-src-pos="1610..1617"></span><span md-src-pos="1617..1635">pip install numpy
+</span><span md-src-pos="1637..1642"></span></code></pre></li>
+    <li md-src-pos="1646..1690">
+     <p md-src-pos="1648..1654">Pillow</p>
+     <pre class="code-fence" md-src-pos="1657..1690"><div class="code-fence-highlighter-copy-button" data-fence-content="cGlwIGluc3RhbGwgcGlsbG93">
+  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/1936059872/?_ijt=upbao5hoe6vdenoa3sang3hjgo">
   <span class="tooltiptext">Copy to clipboard</span>
-</div><code class="language-cmd" md-src-pos="1412..1445"><span md-src-pos="1412..1419"></span><span md-src-pos="1419..1438">pip install pillow
-</span><span md-src-pos="1440..1445"></span></code></pre></li>
-    <li md-src-pos="1446..1497">
-     <p md-src-pos="1448..1454">OpenCV</p>
-     <pre class="code-fence" md-src-pos="1457..1497"><div class="code-fence-highlighter-copy-button" data-fence-content="cGlwIGluc3RhbGwgb3BlbmN2LXB5dGhvbg==">
-  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/115851737/?_ijt=g346qner59d16csdfm0g3cl3cu">
+</div><code class="language-cmd" md-src-pos="1657..1690"><span md-src-pos="1657..1664"></span><span md-src-pos="1664..1683">pip install pillow
+</span><span md-src-pos="1685..1690"></span></code></pre></li>
+    <li md-src-pos="1691..1742">
+     <p md-src-pos="1693..1699">OpenCV</p>
+     <pre class="code-fence" md-src-pos="1702..1742"><div class="code-fence-highlighter-copy-button" data-fence-content="cGlwIGluc3RhbGwgb3BlbmN2LXB5dGhvbg==">
+  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/1936059872/?_ijt=upbao5hoe6vdenoa3sang3hjgo">
   <span class="tooltiptext">Copy to clipboard</span>
-</div><code class="language-cmd" md-src-pos="1457..1497"><span md-src-pos="1457..1464"></span><span md-src-pos="1464..1490">pip install opencv-python
-</span><span md-src-pos="1492..1497"></span></code></pre></li>
+</div><code class="language-cmd" md-src-pos="1702..1742"><span md-src-pos="1702..1709"></span><span md-src-pos="1709..1735">pip install opencv-python
+</span><span md-src-pos="1737..1742"></span></code></pre></li>
    </ul>
-   <h3 id="2-ii-preparation" md-src-pos="1499..1521">2. ii. Preparation</h3>
-   <p md-src-pos="1522..1581"><span md-src-pos="1522..1581">Please put all the files and folders in the same directory.</span></p>
-   <p md-src-pos="1583..1746"><span md-src-pos="1583..1625">The colour input is done by python opencv,</span> <span md-src-pos="1626..1671">and the skewb algorithm finder is done in C++</span> <span md-src-pos="1672..1690">using Monte Carlo.</span> <span md-src-pos="1691..1701">Therefore,</span> <span md-src-pos="1702..1735">you need to first compile the C++</span> <span md-src-pos="1736..1746">programme.</span></p>
-   <ul md-src-pos="1747..1823">
-    <li md-src-pos="1747..1823">Compile the C++ script
-     <pre class="code-fence" md-src-pos="1774..1823"><div class="code-fence-highlighter-copy-button" data-fence-content="ZysrIHNrZXdiX3NvbHV0aW9uX2ZpbmRlci5jcHAgLW8gYQ==">
-  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/115851737/?_ijt=g346qner59d16csdfm0g3cl3cu">
+   <h3 id="2-ii-preparation" md-src-pos="1744..1766">2. ii. Preparation</h3>
+   <p md-src-pos="1767..1826"><span md-src-pos="1767..1826">Please put all the files and folders in the same directory.</span></p>
+   <p md-src-pos="1828..1991"><span md-src-pos="1828..1870">The colour input is done by python opencv,</span> <span md-src-pos="1871..1916">and the skewb algorithm finder is done in C++</span> <span md-src-pos="1917..1935">using Monte Carlo.</span> <span md-src-pos="1936..1946">Therefore,</span> <span md-src-pos="1947..1980">you need to first compile the C++</span> <span md-src-pos="1981..1991">programme.</span></p>
+   <ul md-src-pos="1992..2068">
+    <li md-src-pos="1992..2068">Compile the C++ script
+     <pre class="code-fence" md-src-pos="2019..2068"><div class="code-fence-highlighter-copy-button" data-fence-content="ZysrIHNrZXdiX3NvbHV0aW9uX2ZpbmRlci5jcHAgLW8gYQ==">
+  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/1936059872/?_ijt=upbao5hoe6vdenoa3sang3hjgo">
   <span class="tooltiptext">Copy to clipboard</span>
-</div><code class="language-cmd" md-src-pos="1774..1823"><span md-src-pos="1774..1781"></span><span md-src-pos="1781..1816">g++ skewb_solution_finder.cpp -o a
-</span><span md-src-pos="1818..1823"></span></code></pre></li>
+</div><code class="language-cmd" md-src-pos="2019..2068"><span md-src-pos="2019..2026"></span><span md-src-pos="2026..2061">g++ skewb_solution_finder.cpp -o a
+</span><span md-src-pos="2063..2068"></span></code></pre></li>
    </ul>
-   <p md-src-pos="1825..1916"><span md-src-pos="1825..1830">Then,</span> <span md-src-pos="1831..1885">after you scanned the cube using the python programme,</span> <span md-src-pos="1886..1916">it will run the compiled file.</span></p>
-   <p md-src-pos="1918..1983"><span md-src-pos="1918..1982">This programme requires you to connect a webcam to the computer,</span></p>
-   <ul md-src-pos="1985..2238">
-    <li md-src-pos="1985..2112">
-     <p md-src-pos="1987..2066">Change the webcam number in the code in line 8 of skewb_solver.py if necessary.</p>
-     <pre class="code-fence" md-src-pos="2069..2112"><div class="code-fence-highlighter-copy-button" data-fence-content="Y2FwID0gY3YyLlZpZGVvQ2FwdHVyZSgwKQ==">
-  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/115851737/?_ijt=g346qner59d16csdfm0g3cl3cu">
+   <p md-src-pos="2070..2161"><span md-src-pos="2070..2075">Then,</span> <span md-src-pos="2076..2130">after you scanned the cube using the python programme,</span> <span md-src-pos="2131..2161">it will run the compiled file.</span></p>
+   <p md-src-pos="2163..2228"><span md-src-pos="2163..2227">This programme requires you to connect a webcam to the computer,</span></p>
+   <ul md-src-pos="2230..2483">
+    <li md-src-pos="2230..2357">
+     <p md-src-pos="2232..2311">Change the webcam number in the code in line 8 of skewb_solver.py if necessary.</p>
+     <pre class="code-fence" md-src-pos="2314..2357"><div class="code-fence-highlighter-copy-button" data-fence-content="Y2FwID0gY3YyLlZpZGVvQ2FwdHVyZSgwKQ==">
+  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/1936059872/?_ijt=upbao5hoe6vdenoa3sang3hjgo">
   <span class="tooltiptext">Copy to clipboard</span>
-</div><code class="language-python" md-src-pos="2069..2112"><span md-src-pos="2069..2079"></span><span md-src-pos="2079..2102">cap = cv2.VideoCapture(</span><span md-src-pos="2102..2103" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="2103..2105">)
-</span><span md-src-pos="2107..2112"></span></code></pre></li>
-    <li md-src-pos="2114..2238">
-     <p md-src-pos="2116..2178">If you are using a linux system, change the code as following.</p>
-     <pre class="code-fence" md-src-pos="2181..2238"><div class="code-fence-highlighter-copy-button" data-fence-content="Y2FwID0gY3YyLlZpZGVvQ2FwdHVyZSgwLCBjdjIuQ0FQX1Y0TDIp">
-  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/115851737/?_ijt=g346qner59d16csdfm0g3cl3cu">
+</div><code class="language-python" md-src-pos="2314..2357"><span md-src-pos="2314..2324"></span><span md-src-pos="2324..2347">cap = cv2.VideoCapture(</span><span md-src-pos="2347..2348" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="2348..2350">)
+</span><span md-src-pos="2352..2357"></span></code></pre></li>
+    <li md-src-pos="2359..2483">
+     <p md-src-pos="2361..2423">If you are using a linux system, change the code as following.</p>
+     <pre class="code-fence" md-src-pos="2426..2483"><div class="code-fence-highlighter-copy-button" data-fence-content="Y2FwID0gY3YyLlZpZGVvQ2FwdHVyZSgwLCBjdjIuQ0FQX1Y0TDIp">
+  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/1936059872/?_ijt=upbao5hoe6vdenoa3sang3hjgo">
   <span class="tooltiptext">Copy to clipboard</span>
-</div><code class="language-python" md-src-pos="2181..2238"><span md-src-pos="2181..2191"></span><span md-src-pos="2191..2214">cap = cv2.VideoCapture(</span><span md-src-pos="2214..2215" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="2215..2231">, cv2.CAP_V4L2)
-</span><span md-src-pos="2233..2238"></span></code></pre></li>
+</div><code class="language-python" md-src-pos="2426..2483"><span md-src-pos="2426..2436"></span><span md-src-pos="2436..2459">cap = cv2.VideoCapture(</span><span md-src-pos="2459..2460" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="2460..2476">, cv2.CAP_V4L2)
+</span><span md-src-pos="2478..2483"></span></code></pre></li>
    </ul>
-   <h2 id="3-usage" md-src-pos="2240..2251">3. Usage</h2>
-   <p md-src-pos="2252..2745"><span md-src-pos="2252..2271">The main code is in</span> <strong md-src-pos="2272..2291">skewb_solver.py</strong><span md-src-pos="2291..2292">.</span> <span md-src-pos="2293..2348">Run this python script and scan each face of the skewb.</span> <span md-src-pos="2349..2373">When you scan the skewb,</span> <span md-src-pos="2374..2474">you have to first find the white-green-red corner and place it at bottom right with white facing up.</span> <span md-src-pos="2475..2505">Press enter to capture a face,</span> <span md-src-pos="2506..2602">then follow the animation in the OpenCV preview window to rotate the cube to scan the next face.</span> <span md-src-pos="2603..2652">Should you have any difficulty scanning the cube,</span> <span md-src-pos="2653..2681">you could take a look at the</span> <a href="https://youtu.be/f4b-0wV-rUE?si=kuiRMmu7Bn71bkcC" md-src-pos="2682..2744">demo video</a><span md-src-pos="2744..2745">.</span></p><iframe width="640" height="360" src="https://www.youtube.com/embed/f4b-0wV-rUE" title="Skewb solver programme demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> </iframe>
-   <p md-src-pos="3065..3308"><span md-src-pos="3065..3090">After scanning all faces,</span> <span md-src-pos="3091..3144">the python programme will return the skewb algorithm.</span> <span md-src-pos="3145..3199">The skewb algorithm follows the WCA standard notation.</span> <span md-src-pos="3200..3249">Please refer to quick guide to WCA skewb notation</span> <a href="https://youtu.be/V7M_IKuUREs?si=tjRuOQzYD4ZzFDXb" md-src-pos="3250..3307">video</a><span md-src-pos="3307..3308">.</span></p>
-   <p md-src-pos="3310..3631"><iframe width="640" height="360" src="https://www.youtube.com/embed/V7M_IKuUREs" title="Quick Guide to WCA Skewb Notation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
-   <p md-src-pos="3633..3831"><span md-src-pos="3633..3636">Or,</span> <span md-src-pos="3637..3767">you could just click the link in the terminal under the skewb algorithm for the animation of showing the algorithm as shown in the</span> <a href="https://youtu.be/f4b-0wV-rUE?si=kuiRMmu7Bn71bkcC" md-src-pos="3768..3830">demo video</a><span md-src-pos="3830..3831">.</span></p>
-   <h2 id="4-more-customisation" md-src-pos="3833..3857">4. More Customisation</h2>
-   <p md-src-pos="3859..4064"><span md-src-pos="3859..3862">Let</span>'<span md-src-pos="3863..3890">s say you are right handed,</span> <span md-src-pos="3891..3949">you might want an algorithm that contain less lefty moves.</span> <span md-src-pos="3950..4063">You could actually tune the ratio of the probability of the type of turns that come up in Monte Carlo simulation.</span></p>
-   <ul md-src-pos="4066..4372">
-    <li md-src-pos="4066..4261">Tune the numbers in line 8 of <strong md-src-pos="4098..4127">skewb_solution_finder.cpp</strong>. The numbers in array mean the probability of R showing up to L to U to B respectively.
-     <pre class="code-fence" md-src-pos="4218..4261"><div class="code-fence-highlighter-copy-button" data-fence-content="aW50IHJhdGlvWzRdID0gezEsIDEsIDEsIDF9Ow==">
-  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/115851737/?_ijt=g346qner59d16csdfm0g3cl3cu">
+   <h2 id="3-usage" md-src-pos="2485..2496">3. Usage</h2>
+   <p md-src-pos="2497..2990"><span md-src-pos="2497..2516">The main code is in</span> <strong md-src-pos="2517..2536">skewb_solver.py</strong><span md-src-pos="2536..2537">.</span> <span md-src-pos="2538..2593">Run this python script and scan each face of the skewb.</span> <span md-src-pos="2594..2618">When you scan the skewb,</span> <span md-src-pos="2619..2719">you have to first find the white-green-red corner and place it at bottom right with white facing up.</span> <span md-src-pos="2720..2750">Press enter to capture a face,</span> <span md-src-pos="2751..2847">then follow the animation in the OpenCV preview window to rotate the cube to scan the next face.</span> <span md-src-pos="2848..2897">Should you have any difficulty scanning the cube,</span> <span md-src-pos="2898..2926">you could take a look at the</span> <a href="https://youtu.be/f4b-0wV-rUE?si=kuiRMmu7Bn71bkcC" md-src-pos="2927..2989">demo video</a><span md-src-pos="2989..2990">.</span></p><iframe width="640" height="360" src="https://www.youtube.com/embed/f4b-0wV-rUE" title="Skewb solver programme demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> </iframe>
+   <p md-src-pos="3310..3553"><span md-src-pos="3310..3335">After scanning all faces,</span> <span md-src-pos="3336..3389">the python programme will return the skewb algorithm.</span> <span md-src-pos="3390..3444">The skewb algorithm follows the WCA standard notation.</span> <span md-src-pos="3445..3494">Please refer to quick guide to WCA skewb notation</span> <a href="https://youtu.be/V7M_IKuUREs?si=tjRuOQzYD4ZzFDXb" md-src-pos="3495..3552">video</a><span md-src-pos="3552..3553">.</span></p>
+   <p md-src-pos="3555..3876"><iframe width="640" height="360" src="https://www.youtube.com/embed/V7M_IKuUREs" title="Quick Guide to WCA Skewb Notation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
+   <p md-src-pos="3878..4076"><span md-src-pos="3878..3881">Or,</span> <span md-src-pos="3882..4012">you could just click the link in the terminal under the skewb algorithm for the animation of showing the algorithm as shown in the</span> <a href="https://youtu.be/f4b-0wV-rUE?si=kuiRMmu7Bn71bkcC" md-src-pos="4013..4075">demo video</a><span md-src-pos="4075..4076">.</span></p>
+   <h2 id="4-more-customisation" md-src-pos="4078..4102">4. More Customisation</h2>
+   <p md-src-pos="4104..4309"><span md-src-pos="4104..4107">Let</span>'<span md-src-pos="4108..4135">s say you are right handed,</span> <span md-src-pos="4136..4194">you might want an algorithm that contain less lefty moves.</span> <span md-src-pos="4195..4308">You could actually tune the ratio of the probability of the type of turns that come up in Monte Carlo simulation.</span></p>
+   <ul md-src-pos="4311..4617">
+    <li md-src-pos="4311..4506">Tune the numbers in line 8 of <strong md-src-pos="4343..4372">skewb_solution_finder.cpp</strong>. The numbers in array mean the probability of R showing up to L to U to B respectively.
+     <pre class="code-fence" md-src-pos="4463..4506"><div class="code-fence-highlighter-copy-button" data-fence-content="aW50IHJhdGlvWzRdID0gezEsIDEsIDEsIDF9Ow==">
+  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/1936059872/?_ijt=upbao5hoe6vdenoa3sang3hjgo">
   <span class="tooltiptext">Copy to clipboard</span>
-</div><code class="language-cpp" md-src-pos="4218..4261"><span md-src-pos="4218..4225"></span><span md-src-pos="4225..4254">int ratio[4] = {1, 1, 1, 1};
-</span><span md-src-pos="4256..4261"></span></code></pre></li>
-    <li md-src-pos="4262..4372">If you change the array to {3, 1, 1, 1}, R moves will come up 3 times more frequently than L, U and B moves.</li>
+</div><code class="language-cpp" md-src-pos="4463..4506"><span md-src-pos="4463..4470"></span><span md-src-pos="4470..4499">int ratio[4] = {1, 1, 1, 1};
+</span><span md-src-pos="4501..4506"></span></code></pre></li>
+    <li md-src-pos="4507..4617">If you change the array to {3, 1, 1, 1}, R moves will come up 3 times more frequently than L, U and B moves.</li>
    </ul>
-   <h2 id="5-how-this-programme-works" md-src-pos="4374..4404">5. How this Programme Works</h2>
-   <p md-src-pos="4406..4862"><span md-src-pos="4406..4412">In the</span> <strong md-src-pos="4413..4442">skewb_solution_finder.cpp</strong><span md-src-pos="4442..4443">,</span> <span md-src-pos="4444..4491">I defined the state of the skewb using 3 arrays</span> (<span md-src-pos="4493..4516">will be explained later</span>)<span md-src-pos="4517..4518">.</span> <span md-src-pos="4519..4557">When you compiled and run this script,</span> <span md-src-pos="4558..4601">you need to find the white-green-red corner</span> (<span md-src-pos="4603..4632">I will also explain why later</span>)<span md-src-pos="4633..4634">,</span> <span md-src-pos="4635..4654">and place in front,</span> <span md-src-pos="4655..4688">with white on top as shown below,</span> <span md-src-pos="4689..4747">then input the colours one by one in the order shown below</span> (<span md-src-pos="4749..4773">note that if you use run</span> <strong md-src-pos="4774..4793">skewb_solver.py</strong> <span md-src-pos="4794..4812">and scan the cube,</span> <span md-src-pos="4813..4860">it will automatically input the colours for you</span>)<span md-src-pos="4861..4862">.</span></p>
-   <ul md-src-pos="4864..4948">
-    <li md-src-pos="4864..4948">Input w for white, g for green, r for red, b for blue, o for orange, y for yellow.</li>
+   <h2 id="5-how-this-programme-works" md-src-pos="4619..4649">5. How this Programme Works</h2>
+   <p md-src-pos="4651..5107"><span md-src-pos="4651..4657">In the</span> <strong md-src-pos="4658..4687">skewb_solution_finder.cpp</strong><span md-src-pos="4687..4688">,</span> <span md-src-pos="4689..4736">I defined the state of the skewb using 3 arrays</span> (<span md-src-pos="4738..4761">will be explained later</span>)<span md-src-pos="4762..4763">.</span> <span md-src-pos="4764..4802">When you compiled and run this script,</span> <span md-src-pos="4803..4846">you need to find the white-green-red corner</span> (<span md-src-pos="4848..4877">I will also explain why later</span>)<span md-src-pos="4878..4879">,</span> <span md-src-pos="4880..4899">and place in front,</span> <span md-src-pos="4900..4933">with white on top as shown below,</span> <span md-src-pos="4934..4992">then input the colours one by one in the order shown below</span> (<span md-src-pos="4994..5018">note that if you use run</span> <strong md-src-pos="5019..5038">skewb_solver.py</strong> <span md-src-pos="5039..5057">and scan the cube,</span> <span md-src-pos="5058..5105">it will automatically input the colours for you</span>)<span md-src-pos="5106..5107">.</span></p>
+   <ul md-src-pos="5109..5193">
+    <li md-src-pos="5109..5193">Input w for white, g for green, r for red, b for blue, o for orange, y for yellow.</li>
    </ul>
-   <table md-src-pos="4950..5072">
+   <table md-src-pos="5195..5317">
     <thead>
-     <tr md-src-pos="4950..4962">
-      <th align="center" md-src-pos="4951..4956">Front</th>
-      <th align="center" md-src-pos="4957..4961">Back</th>
+     <tr md-src-pos="5195..5207">
+      <th align="center" md-src-pos="5196..5201">Front</th>
+      <th align="center" md-src-pos="5202..5206">Back</th>
      </tr>
     </thead>
     <tbody>
-     <tr md-src-pos="4977..5072">
-      <td align="center" md-src-pos="4978..5025"><img src="README_picture/order_front.jpeg" alt="orderfront" __idea-generated="true" md-src-pos="4978..5025" data-original-src="README_picture/order_front.jpeg"></td>
-      <td align="center" md-src-pos="5026..5071"><img src="README_picture/order_back.jpeg" alt="orderback" __idea-generated="true" md-src-pos="5026..5071" data-original-src="README_picture/order_back.jpeg"></td>
+     <tr md-src-pos="5222..5317">
+      <td align="center" md-src-pos="5223..5270"><img src="README_picture/order_front.jpeg" alt="orderfront" __idea-generated="true" md-src-pos="5223..5270" data-original-src="README_picture/order_front.jpeg"></td>
+      <td align="center" md-src-pos="5271..5316"><img src="README_picture/order_back.jpeg" alt="orderback" __idea-generated="true" md-src-pos="5271..5316" data-original-src="README_picture/order_back.jpeg"></td>
      </tr>
     </tbody>
    </table>
-   <p md-src-pos="5074..5171"><span md-src-pos="5074..5162">Then there is a function that converts the colours to the 3 arrays that define the skewb</span>'<span md-src-pos="5163..5171">s state.</span></p>
-   <h3 id="5-i-understanding-mechanism-of-the-skewb" md-src-pos="5173..5219">5. i. Understanding Mechanism of the Skewb</h3>
-   <table md-src-pos="5221..5439">
+   <p md-src-pos="5319..5416"><span md-src-pos="5319..5407">Then there is a function that converts the colours to the 3 arrays that define the skewb</span>'<span md-src-pos="5408..5416">s state.</span></p>
+   <h3 id="5-i-understanding-mechanism-of-the-skewb" md-src-pos="5418..5464">5. i. Understanding Mechanism of the Skewb</h3>
+   <table md-src-pos="5466..5684">
     <thead>
-     <tr md-src-pos="5221..5264">
-      <th align="center" md-src-pos="5222..5229">Centres</th>
-      <th align="center" md-src-pos="5230..5246">Attached corners</th>
-      <th align="center" md-src-pos="5247..5263">Floating corners</th>
+     <tr md-src-pos="5466..5509">
+      <th align="center" md-src-pos="5467..5474">Centres</th>
+      <th align="center" md-src-pos="5475..5491">Attached corners</th>
+      <th align="center" md-src-pos="5492..5508">Floating corners</th>
      </tr>
     </thead>
     <tbody>
-     <tr md-src-pos="5285..5439">
-      <td align="center" md-src-pos="5286..5324"><img src="README_picture/centres.png" alt="centres" __idea-generated="true" md-src-pos="5286..5324" data-original-src="README_picture/centres.png"></td>
-      <td align="center" md-src-pos="5325..5381"><img src="README_picture/attached_corners.png" alt="attachedcorners" __idea-generated="true" md-src-pos="5325..5381" data-original-src="README_picture/attached_corners.png"></td>
-      <td align="center" md-src-pos="5382..5438"><img src="README_picture/floating_corners.png" alt="floatingcorners" __idea-generated="true" md-src-pos="5382..5438" data-original-src="README_picture/floating_corners.png"></td>
+     <tr md-src-pos="5530..5684">
+      <td align="center" md-src-pos="5531..5569"><img src="README_picture/centres.png" alt="centres" __idea-generated="true" md-src-pos="5531..5569" data-original-src="README_picture/centres.png"></td>
+      <td align="center" md-src-pos="5570..5626"><img src="README_picture/attached_corners.png" alt="attachedcorners" __idea-generated="true" md-src-pos="5570..5626" data-original-src="README_picture/attached_corners.png"></td>
+      <td align="center" md-src-pos="5627..5683"><img src="README_picture/floating_corners.png" alt="floatingcorners" __idea-generated="true" md-src-pos="5627..5683" data-original-src="README_picture/floating_corners.png"></td>
      </tr>
     </tbody>
    </table>
-   <p md-src-pos="5441..5866"><span md-src-pos="5441..5465">As shown in the figures,</span> <span md-src-pos="5466..5514">centre is the center piece with only one colour.</span> <span md-src-pos="5515..5559">Corner on the other hand contains 3 colours,</span> <span md-src-pos="5560..5592">and they are categorised into 2,</span> <span md-src-pos="5593..5610">attached corners,</span> <span md-src-pos="5611..5632">and floating corners.</span> <span md-src-pos="5633..5663">When you disassemble the cube,</span> <span md-src-pos="5664..5736">you will find that the attached corners are connected to the core piece,</span> <span md-src-pos="5737..5780">and their relative positions cannot change.</span> <span md-src-pos="5781..5816">Floating corners of the other hand,</span> <span md-src-pos="5817..5844">do not connect to the core,</span> <span md-src-pos="5845..5866">they can move around.</span></p>
-   <h3 id="5-ii-defining-the-state-of-the-skewb" md-src-pos="5868..5910">5. ii. Defining the State of the Skewb</h3>
-   <p md-src-pos="5912..6032"><span md-src-pos="5912..5967">Now that you understand the basic mechanism of a skewb,</span> <span md-src-pos="5968..6032">we can now try to understand how to define the state of a skewb.</span></p>
-   <p md-src-pos="6034..6403"><span md-src-pos="6034..6042">In fact,</span> <span md-src-pos="6043..6147">there are only 8 different kinds of individual turns of a skewb needed to attain any state of the skewb.</span> <span md-src-pos="6148..6163">In other words,</span> <span md-src-pos="6164..6237">only 8 different kinds of turns are needed to solve a skewb of any state.</span> <span md-src-pos="6238..6290">You could refer to quick guide to WCA skewb notation</span> <a href="https://youtu.be/V7M_IKuUREs?si=tjRuOQzYD4ZzFDXb" md-src-pos="6291..6348">video</a> <span md-src-pos="6349..6403">to learn the 8 different moves used in this programme.</span></p>
-   <p md-src-pos="6405..6793"><span md-src-pos="6405..6420">Coincidentally,</span> <span md-src-pos="6421..6500">if you put white-green-red corner in front with white facing up as shown in the</span> <a href="https://youtu.be/V7M_IKuUREs?si=tjRuOQzYD4ZzFDXb" md-src-pos="6501..6558">video</a><span md-src-pos="6558..6559">,</span> <span md-src-pos="6560..6620">all the 8 turns will not affect this white-green-red corner.</span> <span md-src-pos="6621..6673">We can conveniently use this corner as anchor as our</span> "<span md-src-pos="6675..6687">virtual cube</span>" (<span md-src-pos="6690..6769">which means the programme will be based on the white-green-red corner in front,</span> <span md-src-pos="6770..6791">with white facing top</span>)<span md-src-pos="6792..6793">.</span></p>
-   <p md-src-pos="6795..6931"><span md-src-pos="6795..6828">The first array is called centres</span>[6]<span md-src-pos="6831..6832">,</span> <span md-src-pos="6833..6870">this defines the position of centres.</span> <span md-src-pos="6871..6931">The integers are mapped to different centres as shown below.</span></p>
-   <ul md-src-pos="6933..7057">
-    <li md-src-pos="6933..6953">0 --&gt; white centre</li>
-    <li md-src-pos="6954..6974">1 --&gt; green centre</li>
-    <li md-src-pos="6975..6993">2 --&gt; red centre</li>
-    <li md-src-pos="6994..7013">3 --&gt; blue centre</li>
-    <li md-src-pos="7014..7035">4 --&gt; orange centre</li>
-    <li md-src-pos="7036..7057">5 --&gt; yellow centre</li>
+   <p md-src-pos="5686..6111"><span md-src-pos="5686..5710">As shown in the figures,</span> <span md-src-pos="5711..5759">centre is the center piece with only one colour.</span> <span md-src-pos="5760..5804">Corner on the other hand contains 3 colours,</span> <span md-src-pos="5805..5837">and they are categorised into 2,</span> <span md-src-pos="5838..5855">attached corners,</span> <span md-src-pos="5856..5877">and floating corners.</span> <span md-src-pos="5878..5908">When you disassemble the cube,</span> <span md-src-pos="5909..5981">you will find that the attached corners are connected to the core piece,</span> <span md-src-pos="5982..6025">and their relative positions cannot change.</span> <span md-src-pos="6026..6061">Floating corners of the other hand,</span> <span md-src-pos="6062..6089">do not connect to the core,</span> <span md-src-pos="6090..6111">they can move around.</span></p>
+   <h3 id="5-ii-defining-the-state-of-the-skewb" md-src-pos="6113..6155">5. ii. Defining the State of the Skewb</h3>
+   <p md-src-pos="6157..6277"><span md-src-pos="6157..6212">Now that you understand the basic mechanism of a skewb,</span> <span md-src-pos="6213..6277">we can now try to understand how to define the state of a skewb.</span></p>
+   <p md-src-pos="6279..6648"><span md-src-pos="6279..6287">In fact,</span> <span md-src-pos="6288..6392">there are only 8 different kinds of individual turns of a skewb needed to attain any state of the skewb.</span> <span md-src-pos="6393..6408">In other words,</span> <span md-src-pos="6409..6482">only 8 different kinds of turns are needed to solve a skewb of any state.</span> <span md-src-pos="6483..6535">You could refer to quick guide to WCA skewb notation</span> <a href="https://youtu.be/V7M_IKuUREs?si=tjRuOQzYD4ZzFDXb" md-src-pos="6536..6593">video</a> <span md-src-pos="6594..6648">to learn the 8 different moves used in this programme.</span></p>
+   <p md-src-pos="6650..7038"><span md-src-pos="6650..6665">Coincidentally,</span> <span md-src-pos="6666..6745">if you put white-green-red corner in front with white facing up as shown in the</span> <a href="https://youtu.be/V7M_IKuUREs?si=tjRuOQzYD4ZzFDXb" md-src-pos="6746..6803">video</a><span md-src-pos="6803..6804">,</span> <span md-src-pos="6805..6865">all the 8 turns will not affect this white-green-red corner.</span> <span md-src-pos="6866..6918">We can conveniently use this corner as anchor as our</span> "<span md-src-pos="6920..6932">virtual cube</span>" (<span md-src-pos="6935..7014">which means the programme will be based on the white-green-red corner in front,</span> <span md-src-pos="7015..7036">with white facing top</span>)<span md-src-pos="7037..7038">.</span></p>
+   <p md-src-pos="7040..7176"><span md-src-pos="7040..7073">The first array is called centres</span>[6]<span md-src-pos="7076..7077">,</span> <span md-src-pos="7078..7115">this defines the position of centres.</span> <span md-src-pos="7116..7176">The integers are mapped to different centres as shown below.</span></p>
+   <ul md-src-pos="7178..7302">
+    <li md-src-pos="7178..7198">0 --&gt; white centre</li>
+    <li md-src-pos="7199..7219">1 --&gt; green centre</li>
+    <li md-src-pos="7220..7238">2 --&gt; red centre</li>
+    <li md-src-pos="7239..7258">3 --&gt; blue centre</li>
+    <li md-src-pos="7259..7280">4 --&gt; orange centre</li>
+    <li md-src-pos="7281..7302">5 --&gt; yellow centre</li>
    </ul>
-   <p md-src-pos="7059..7304"><span md-src-pos="7059..7147">First entry of the array stores the position that white centre should be at when solved,</span> <span md-src-pos="7148..7224">second entry stores the position that green centre should be at when solved,</span> <span md-src-pos="7225..7235">and so on.</span> <span md-src-pos="7236..7264">When the centres are solved,</span> <span md-src-pos="7265..7284">the array should be</span> <span md-src-pos="7285..7288">{0,</span> <span md-src-pos="7289..7291">1,</span> <span md-src-pos="7292..7294">2,</span> <span md-src-pos="7295..7297">3,</span> <span md-src-pos="7298..7300">4,</span> <span md-src-pos="7301..7304">5}.</span></p>
-   <p md-src-pos="7306..7452"><span md-src-pos="7306..7342">The second array is called corners_p</span>[7]<span md-src-pos="7345..7346">,</span> <span md-src-pos="7347..7391">this defines the permutation of the corners.</span> <span md-src-pos="7392..7452">The integers are mapped to different corners as shown below.</span></p>
-   <ul md-src-pos="7454..7682">
-    <li md-src-pos="7454..7486">0 --&gt; white-orange-blue corner</li>
-    <li md-src-pos="7487..7516">1 --&gt; white-red-blue corner</li>
-    <li md-src-pos="7517..7550">2 --&gt; white-green-orange corner</li>
-    <li md-src-pos="7551..7582">3 --&gt; yellow-green-red corner</li>
-    <li md-src-pos="7583..7613">4 --&gt; yellow-red-blue corner</li>
-    <li md-src-pos="7614..7647">5 --&gt; yellow-blue-orange corner</li>
-    <li md-src-pos="7648..7682">6 --&gt; yellow-green-orange corner</li>
+   <p md-src-pos="7304..7549"><span md-src-pos="7304..7392">First entry of the array stores the position that white centre should be at when solved,</span> <span md-src-pos="7393..7469">second entry stores the position that green centre should be at when solved,</span> <span md-src-pos="7470..7480">and so on.</span> <span md-src-pos="7481..7509">When the centres are solved,</span> <span md-src-pos="7510..7529">the array should be</span> <span md-src-pos="7530..7533">{0,</span> <span md-src-pos="7534..7536">1,</span> <span md-src-pos="7537..7539">2,</span> <span md-src-pos="7540..7542">3,</span> <span md-src-pos="7543..7545">4,</span> <span md-src-pos="7546..7549">5}.</span></p>
+   <p md-src-pos="7551..7697"><span md-src-pos="7551..7587">The second array is called corners_p</span>[7]<span md-src-pos="7590..7591">,</span> <span md-src-pos="7592..7636">this defines the permutation of the corners.</span> <span md-src-pos="7637..7697">The integers are mapped to different corners as shown below.</span></p>
+   <ul md-src-pos="7699..7927">
+    <li md-src-pos="7699..7731">0 --&gt; white-orange-blue corner</li>
+    <li md-src-pos="7732..7761">1 --&gt; white-red-blue corner</li>
+    <li md-src-pos="7762..7795">2 --&gt; white-green-orange corner</li>
+    <li md-src-pos="7796..7827">3 --&gt; yellow-green-red corner</li>
+    <li md-src-pos="7828..7858">4 --&gt; yellow-red-blue corner</li>
+    <li md-src-pos="7859..7892">5 --&gt; yellow-blue-orange corner</li>
+    <li md-src-pos="7893..7927">6 --&gt; yellow-green-orange corner</li>
    </ul>
-   <p md-src-pos="7684..7968"><span md-src-pos="7684..7784">First entry of the array stores the position that white-orange-blue corner should be at when solved,</span> <span md-src-pos="7785..7870">second entry stores the position that white-red-blue corner should be at when solved,</span> <span md-src-pos="7871..7881">and so on.</span> <span md-src-pos="7882..7925">When the permutation of corners are solved,</span> <span md-src-pos="7926..7945">the array should be</span> <span md-src-pos="7946..7949">{0,</span> <span md-src-pos="7950..7952">1,</span> <span md-src-pos="7953..7955">2,</span> <span md-src-pos="7956..7958">3,</span> <span md-src-pos="7959..7961">4,</span> <span md-src-pos="7962..7964">5,</span> <span md-src-pos="7965..7968">6}.</span></p>
-   <p md-src-pos="7970..8539"><span md-src-pos="7970..8005">The third array is called corners_o</span>[7]<span md-src-pos="8008..8009">,</span> <span md-src-pos="8010..8054">this defines the orientation of the corners.</span> <span md-src-pos="8055..8107">Each corner must have either white or yellow colour,</span> <span md-src-pos="8108..8157">when the white or yellow colour faces up or down,</span> <span md-src-pos="8158..8173">the entry is 0,</span> <span md-src-pos="8174..8213">when it faces right-front or left-back,</span> <span md-src-pos="8214..8229">the input is 1,</span> <span md-src-pos="8230..8269">when it faces left-front or right-back,</span> <span md-src-pos="8270..8285">the input is 2.</span> <span md-src-pos="8286..8352">The first entry stores the orientation of white-orange-blue corner</span> (<span md-src-pos="8354..8362">0 corner</span>)<span md-src-pos="8363..8364">,</span> <span md-src-pos="8365..8429">the second entry stores the orientation of white-red-blue corner</span> (<span md-src-pos="8431..8439">1 corner</span>)<span md-src-pos="8440..8441">,</span> <span md-src-pos="8442..8452">and so on.</span> <span md-src-pos="8453..8496">When the orientation of corners are solved,</span> <span md-src-pos="8497..8516">the array should be</span> <span md-src-pos="8517..8520">{0,</span> <span md-src-pos="8521..8523">0,</span> <span md-src-pos="8524..8526">0,</span> <span md-src-pos="8527..8529">0,</span> <span md-src-pos="8530..8532">0,</span> <span md-src-pos="8533..8535">0,</span> <span md-src-pos="8536..8539">0}.</span></p>
-   <h3 id="5-iii-defining-turns" md-src-pos="8541..8567">5. iii. Defining Turns</h3>
-   <p md-src-pos="8569..8775"><span md-src-pos="8569..8597">There are 8 different turns,</span> <span md-src-pos="8598..8607">namely R,</span> <span md-src-pos="8608..8609">R</span>'<span md-src-pos="8610..8611">,</span> <span md-src-pos="8612..8614">L,</span> <span md-src-pos="8615..8616">L</span>'<span md-src-pos="8617..8618">,</span> <span md-src-pos="8619..8621">U,</span> <span md-src-pos="8622..8623">U</span>'<span md-src-pos="8624..8625">,</span> <span md-src-pos="8626..8633">B and B</span>'<span md-src-pos="8634..8635">.</span> <span md-src-pos="8636..8658">There are 8 functions,</span> <span md-src-pos="8659..8677">one for each turn.</span> <span md-src-pos="8678..8759">Each functions will apply necessary changes to the 3 arrays to do the turn to the</span> "<span md-src-pos="8761..8773">virtual cube</span>"<span md-src-pos="8774..8775">.</span></p>
-   <h3 id="5-iv-gods-number" md-src-pos="8777..8800">5. iv. God's Number</h3>
-   <p md-src-pos="8802..8917"><span md-src-pos="8802..8805">God</span>'<span md-src-pos="8806..8882">s number is the maximum number of turns needed to solve any state of a cube.</span> <span md-src-pos="8883..8893">For skewb,</span> <span md-src-pos="8894..8901">the God</span>'<span md-src-pos="8902..8917">s number is 11.</span></p>
-   <h3 id="5-v-monte-carlo" md-src-pos="8919..8940">5. v. Monte Carlo</h3>
-   <p md-src-pos="8942..9405"><span md-src-pos="8942..9044">This programme will then do random moves to the skewb and check whether it is solved after each moves.</span> <span md-src-pos="9045..9090">If solution is not found after doing 12 moves</span> (<span md-src-pos="9092..9114">one more move than God</span>'<span md-src-pos="9115..9123">s number</span>)<span md-src-pos="9124..9125">,</span> <span md-src-pos="9126..9163">it will search for another algorithm.</span> <span md-src-pos="9164..9215">The programme will avoid applying duplicated moves,</span> <span md-src-pos="9216..9238">such as R after R or R</span>'<span md-src-pos="9239..9240">.</span> <span md-src-pos="9241..9321">The Monte Carlo simulation will be based on the ratio set in line 8 of the code,</span> <span md-src-pos="9322..9405">and the probability of generating clockwise and counterclockwise turn are the same.</span></p>
-   <h3 id="5-vi-colour-recognition" md-src-pos="9407..9436">5. vi. Colour Recognition</h3>
-   <p md-src-pos="9438..9587"><span md-src-pos="9438..9486">The colour recognition is done by python opencv.</span> <span md-src-pos="9487..9516">For colours other than white,</span> <span md-src-pos="9517..9587">I allowed a range of hue and saturation shift from my defined colours.</span></p>
-   <pre class="code-fence" md-src-pos="9589..9774"><div class="code-fence-highlighter-copy-button" data-fence-content="ZGVmIGdldF9saW1pdHMoY29sb3VyKToKICAgICMuLi4KICAgIGxvd2VyX2xpbWl0ID0gaHN2Q1swXVswXVswXSAtIDEwLCAxMDAsIDEwMAogICAgdXBwZXJfbGltaXQgPSBoc3ZDWzBdWzBdWzBdICsgMTAsIDI1NSwgMjU1CiAgICAjLi4uCiAgICByZXR1cm4gbG93ZXJfbGltaXQsIHVwcGVyX2xpbWl0">
-  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/115851737/?_ijt=g346qner59d16csdfm0g3cl3cu">
+   <p md-src-pos="7929..8213"><span md-src-pos="7929..8029">First entry of the array stores the position that white-orange-blue corner should be at when solved,</span> <span md-src-pos="8030..8115">second entry stores the position that white-red-blue corner should be at when solved,</span> <span md-src-pos="8116..8126">and so on.</span> <span md-src-pos="8127..8170">When the permutation of corners are solved,</span> <span md-src-pos="8171..8190">the array should be</span> <span md-src-pos="8191..8194">{0,</span> <span md-src-pos="8195..8197">1,</span> <span md-src-pos="8198..8200">2,</span> <span md-src-pos="8201..8203">3,</span> <span md-src-pos="8204..8206">4,</span> <span md-src-pos="8207..8209">5,</span> <span md-src-pos="8210..8213">6}.</span></p>
+   <p md-src-pos="8215..8784"><span md-src-pos="8215..8250">The third array is called corners_o</span>[7]<span md-src-pos="8253..8254">,</span> <span md-src-pos="8255..8299">this defines the orientation of the corners.</span> <span md-src-pos="8300..8352">Each corner must have either white or yellow colour,</span> <span md-src-pos="8353..8402">when the white or yellow colour faces up or down,</span> <span md-src-pos="8403..8418">the entry is 0,</span> <span md-src-pos="8419..8458">when it faces right-front or left-back,</span> <span md-src-pos="8459..8474">the input is 1,</span> <span md-src-pos="8475..8514">when it faces left-front or right-back,</span> <span md-src-pos="8515..8530">the input is 2.</span> <span md-src-pos="8531..8597">The first entry stores the orientation of white-orange-blue corner</span> (<span md-src-pos="8599..8607">0 corner</span>)<span md-src-pos="8608..8609">,</span> <span md-src-pos="8610..8674">the second entry stores the orientation of white-red-blue corner</span> (<span md-src-pos="8676..8684">1 corner</span>)<span md-src-pos="8685..8686">,</span> <span md-src-pos="8687..8697">and so on.</span> <span md-src-pos="8698..8741">When the orientation of corners are solved,</span> <span md-src-pos="8742..8761">the array should be</span> <span md-src-pos="8762..8765">{0,</span> <span md-src-pos="8766..8768">0,</span> <span md-src-pos="8769..8771">0,</span> <span md-src-pos="8772..8774">0,</span> <span md-src-pos="8775..8777">0,</span> <span md-src-pos="8778..8780">0,</span> <span md-src-pos="8781..8784">0}.</span></p>
+   <h3 id="5-iii-defining-turns" md-src-pos="8786..8812">5. iii. Defining Turns</h3>
+   <p md-src-pos="8814..9020"><span md-src-pos="8814..8842">There are 8 different turns,</span> <span md-src-pos="8843..8852">namely R,</span> <span md-src-pos="8853..8854">R</span>'<span md-src-pos="8855..8856">,</span> <span md-src-pos="8857..8859">L,</span> <span md-src-pos="8860..8861">L</span>'<span md-src-pos="8862..8863">,</span> <span md-src-pos="8864..8866">U,</span> <span md-src-pos="8867..8868">U</span>'<span md-src-pos="8869..8870">,</span> <span md-src-pos="8871..8878">B and B</span>'<span md-src-pos="8879..8880">.</span> <span md-src-pos="8881..8903">There are 8 functions,</span> <span md-src-pos="8904..8922">one for each turn.</span> <span md-src-pos="8923..9004">Each functions will apply necessary changes to the 3 arrays to do the turn to the</span> "<span md-src-pos="9006..9018">virtual cube</span>"<span md-src-pos="9019..9020">.</span></p>
+   <h3 id="5-iv-gods-number" md-src-pos="9022..9045">5. iv. God's Number</h3>
+   <p md-src-pos="9047..9162"><span md-src-pos="9047..9050">God</span>'<span md-src-pos="9051..9127">s number is the maximum number of turns needed to solve any state of a cube.</span> <span md-src-pos="9128..9138">For skewb,</span> <span md-src-pos="9139..9146">the God</span>'<span md-src-pos="9147..9162">s number is 11.</span></p>
+   <h3 id="5-v-monte-carlo" md-src-pos="9164..9185">5. v. Monte Carlo</h3>
+   <p md-src-pos="9187..9650"><span md-src-pos="9187..9289">This programme will then do random moves to the skewb and check whether it is solved after each moves.</span> <span md-src-pos="9290..9335">If solution is not found after doing 12 moves</span> (<span md-src-pos="9337..9359">one more move than God</span>'<span md-src-pos="9360..9368">s number</span>)<span md-src-pos="9369..9370">,</span> <span md-src-pos="9371..9408">it will search for another algorithm.</span> <span md-src-pos="9409..9460">The programme will avoid applying duplicated moves,</span> <span md-src-pos="9461..9483">such as R after R or R</span>'<span md-src-pos="9484..9485">.</span> <span md-src-pos="9486..9566">The Monte Carlo simulation will be based on the ratio set in line 8 of the code,</span> <span md-src-pos="9567..9650">and the probability of generating clockwise and counterclockwise turn are the same.</span></p>
+   <h3 id="5-vi-colour-recognition" md-src-pos="9652..9681">5. vi. Colour Recognition</h3>
+   <p md-src-pos="9683..9832"><span md-src-pos="9683..9731">The colour recognition is done by python opencv.</span> <span md-src-pos="9732..9761">For colours other than white,</span> <span md-src-pos="9762..9832">I allowed a range of hue and saturation shift from my defined colours.</span></p>
+   <pre class="code-fence" md-src-pos="9834..10019"><div class="code-fence-highlighter-copy-button" data-fence-content="ZGVmIGdldF9saW1pdHMoY29sb3VyKToKICAgICMuLi4KICAgIGxvd2VyX2xpbWl0ID0gaHN2Q1swXVswXVswXSAtIDEwLCAxMDAsIDEwMAogICAgdXBwZXJfbGltaXQgPSBoc3ZDWzBdWzBdWzBdICsgMTAsIDI1NSwgMjU1CiAgICAjLi4uCiAgICByZXR1cm4gbG93ZXJfbGltaXQsIHVwcGVyX2xpbWl0">
+  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/1936059872/?_ijt=upbao5hoe6vdenoa3sang3hjgo">
   <span class="tooltiptext">Copy to clipboard</span>
-</div><code class="language-python" md-src-pos="9589..9774"><span md-src-pos="9589..9599"></span><span md-src-pos="9599..9602" style="color: rgb(0, 51, 179);">def</span><span md-src-pos="9602..9623"> get_limits(colour):
-</span><span md-src-pos="9623..9627">    </span><span md-src-pos="9627..9631" style="color: rgb(140, 140, 140);">#...</span><span md-src-pos="9631..9632">
-</span><span md-src-pos="9632..9655">    lower_limit = hsvC[</span><span md-src-pos="9655..9656" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="9656..9658">][</span><span md-src-pos="9658..9659" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="9659..9661">][</span><span md-src-pos="9661..9662" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="9662..9666">] - </span><span md-src-pos="9666..9668" style="color: rgb(23, 80, 235);">10</span><span md-src-pos="9668..9670">, </span><span md-src-pos="9670..9673" style="color: rgb(23, 80, 235);">100</span><span md-src-pos="9673..9675">, </span><span md-src-pos="9675..9678" style="color: rgb(23, 80, 235);">100</span><span md-src-pos="9678..9679">
-</span><span md-src-pos="9679..9702">    upper_limit = hsvC[</span><span md-src-pos="9702..9703" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="9703..9705">][</span><span md-src-pos="9705..9706" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="9706..9708">][</span><span md-src-pos="9708..9709" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="9709..9713">] + </span><span md-src-pos="9713..9715" style="color: rgb(23, 80, 235);">10</span><span md-src-pos="9715..9717">, </span><span md-src-pos="9717..9720" style="color: rgb(23, 80, 235);">255</span><span md-src-pos="9720..9722">, </span><span md-src-pos="9722..9725" style="color: rgb(23, 80, 235);">255</span><span md-src-pos="9725..9726">
-</span><span md-src-pos="9726..9730">    </span><span md-src-pos="9730..9734" style="color: rgb(140, 140, 140);">#...</span><span md-src-pos="9734..9735">
-</span><span md-src-pos="9735..9739">    </span><span md-src-pos="9739..9745" style="color: rgb(0, 51, 179);">return</span><span md-src-pos="9745..9771"> lower_limit, upper_limit
-</span><span md-src-pos="9771..9774"></span></code></pre>
-   <p md-src-pos="9776..9908"><span md-src-pos="9776..9798">In the above function,</span> <span md-src-pos="9799..9802">the</span> <span md-src-pos="9803..9810">-10 and</span> <span md-src-pos="9811..9835">+10 refers to hue shift,</span> <span md-src-pos="9836..9908">while 100 and 255 refers to minimum and maximum saturation respectively.</span></p>
-   <p md-src-pos="9910..10040"><span md-src-pos="9910..9927">For white colour,</span> <span md-src-pos="9928..9930">it</span>'<span md-src-pos="9931..9973">s not that meaningful to define hue shift.</span> <span md-src-pos="9974..9984">Therefore,</span> <span md-src-pos="9985..10040">I hard coded the lower and upper limit of white colour.</span></p>
-   <pre class="code-fence" md-src-pos="10042..10162"><div class="code-fence-highlighter-copy-button" data-fence-content="bG93ZXJfd2hpdGUsIHVwcGVyX3doaXRlID0gbnAuYXJyYXkoWzAsIDAsIDE1MF0sIGR0eXBlPW5wLnVpbnQ4KSwgbnAuYXJyYXkoWzE3OSwgNTUsIDI1NV0sIGR0eXBlPW5wLnVpbnQ4KQ==">
-  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/115851737/?_ijt=g346qner59d16csdfm0g3cl3cu">
+</div><code class="language-python" md-src-pos="9834..10019"><span md-src-pos="9834..9844"></span><span md-src-pos="9844..9847" style="color: rgb(0, 51, 179);">def</span><span md-src-pos="9847..9868"> get_limits(colour):
+</span><span md-src-pos="9868..9872">    </span><span md-src-pos="9872..9876" style="color: rgb(140, 140, 140);">#...</span><span md-src-pos="9876..9877">
+</span><span md-src-pos="9877..9900">    lower_limit = hsvC[</span><span md-src-pos="9900..9901" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="9901..9903">][</span><span md-src-pos="9903..9904" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="9904..9906">][</span><span md-src-pos="9906..9907" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="9907..9911">] - </span><span md-src-pos="9911..9913" style="color: rgb(23, 80, 235);">10</span><span md-src-pos="9913..9915">, </span><span md-src-pos="9915..9918" style="color: rgb(23, 80, 235);">100</span><span md-src-pos="9918..9920">, </span><span md-src-pos="9920..9923" style="color: rgb(23, 80, 235);">100</span><span md-src-pos="9923..9924">
+</span><span md-src-pos="9924..9947">    upper_limit = hsvC[</span><span md-src-pos="9947..9948" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="9948..9950">][</span><span md-src-pos="9950..9951" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="9951..9953">][</span><span md-src-pos="9953..9954" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="9954..9958">] + </span><span md-src-pos="9958..9960" style="color: rgb(23, 80, 235);">10</span><span md-src-pos="9960..9962">, </span><span md-src-pos="9962..9965" style="color: rgb(23, 80, 235);">255</span><span md-src-pos="9965..9967">, </span><span md-src-pos="9967..9970" style="color: rgb(23, 80, 235);">255</span><span md-src-pos="9970..9971">
+</span><span md-src-pos="9971..9975">    </span><span md-src-pos="9975..9979" style="color: rgb(140, 140, 140);">#...</span><span md-src-pos="9979..9980">
+</span><span md-src-pos="9980..9984">    </span><span md-src-pos="9984..9990" style="color: rgb(0, 51, 179);">return</span><span md-src-pos="9990..10016"> lower_limit, upper_limit
+</span><span md-src-pos="10016..10019"></span></code></pre>
+   <p md-src-pos="10021..10153"><span md-src-pos="10021..10043">In the above function,</span> <span md-src-pos="10044..10047">the</span> <span md-src-pos="10048..10055">-10 and</span> <span md-src-pos="10056..10080">+10 refers to hue shift,</span> <span md-src-pos="10081..10153">while 100 and 255 refers to minimum and maximum saturation respectively.</span></p>
+   <p md-src-pos="10155..10285"><span md-src-pos="10155..10172">For white colour,</span> <span md-src-pos="10173..10175">it</span>'<span md-src-pos="10176..10218">s not that meaningful to define hue shift.</span> <span md-src-pos="10219..10229">Therefore,</span> <span md-src-pos="10230..10285">I hard coded the lower and upper limit of white colour.</span></p>
+   <pre class="code-fence" md-src-pos="10287..10407"><div class="code-fence-highlighter-copy-button" data-fence-content="bG93ZXJfd2hpdGUsIHVwcGVyX3doaXRlID0gbnAuYXJyYXkoWzAsIDAsIDE1MF0sIGR0eXBlPW5wLnVpbnQ4KSwgbnAuYXJyYXkoWzE3OSwgNTUsIDI1NV0sIGR0eXBlPW5wLnVpbnQ4KQ==">
+  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/1936059872/?_ijt=upbao5hoe6vdenoa3sang3hjgo">
   <span class="tooltiptext">Copy to clipboard</span>
-</div><code class="language-python" md-src-pos="10042..10162"><span md-src-pos="10042..10052"></span><span md-src-pos="10052..10089">lower_white, upper_white = np.array([</span><span md-src-pos="10089..10090" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="10090..10092">, </span><span md-src-pos="10092..10093" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="10093..10095">, </span><span md-src-pos="10095..10098" style="color: rgb(23, 80, 235);">150</span><span md-src-pos="10098..10128">], dtype=np.uint8), np.array([</span><span md-src-pos="10128..10131" style="color: rgb(23, 80, 235);">179</span><span md-src-pos="10131..10133">, </span><span md-src-pos="10133..10135" style="color: rgb(23, 80, 235);">55</span><span md-src-pos="10135..10137">, </span><span md-src-pos="10137..10140" style="color: rgb(23, 80, 235);">255</span><span md-src-pos="10140..10159">], dtype=np.uint8)
-</span><span md-src-pos="10159..10162"></span></code></pre>
-   <h3 id="5-vii-inputting-colour-with-python-script" md-src-pos="10164..10211">5. vii. Inputting Colour With Python Script</h3>
-   <pre class="code-fence" md-src-pos="10213..10451"><div class="code-fence-highlighter-copy-button" data-fence-content="cHJvY2VzcyA9IHN1YnByb2Nlc3MuUG9wZW4oWycuL2EnXSwgc3RkaW49c3VicHJvY2Vzcy5QSVBFLCBzdGRvdXQ9c3VicHJvY2Vzcy5QSVBFLCBzdGRlcnI9c3VicHJvY2Vzcy5QSVBFLCB0ZXh0PVRydWUpCm91dHB1dCwgZXJyb3IgPSBwcm9jZXNzLmNvbW11bmljYXRlKGlucHV0PWlucHV0X3N0cmluZykKaWYgZXJyb3I6CiAgICBwcmludChlcnJvcikKZWxzZToKICAgIHByaW50KG91dHB1dCk=">
-  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/115851737/?_ijt=g346qner59d16csdfm0g3cl3cu">
+</div><code class="language-python" md-src-pos="10287..10407"><span md-src-pos="10287..10297"></span><span md-src-pos="10297..10334">lower_white, upper_white = np.array([</span><span md-src-pos="10334..10335" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="10335..10337">, </span><span md-src-pos="10337..10338" style="color: rgb(23, 80, 235);">0</span><span md-src-pos="10338..10340">, </span><span md-src-pos="10340..10343" style="color: rgb(23, 80, 235);">150</span><span md-src-pos="10343..10373">], dtype=np.uint8), np.array([</span><span md-src-pos="10373..10376" style="color: rgb(23, 80, 235);">179</span><span md-src-pos="10376..10378">, </span><span md-src-pos="10378..10380" style="color: rgb(23, 80, 235);">55</span><span md-src-pos="10380..10382">, </span><span md-src-pos="10382..10385" style="color: rgb(23, 80, 235);">255</span><span md-src-pos="10385..10404">], dtype=np.uint8)
+</span><span md-src-pos="10404..10407"></span></code></pre>
+   <h3 id="5-vii-inputting-colour-with-python-script" md-src-pos="10409..10456">5. vii. Inputting Colour With Python Script</h3>
+   <pre class="code-fence" md-src-pos="10458..10696"><div class="code-fence-highlighter-copy-button" data-fence-content="cHJvY2VzcyA9IHN1YnByb2Nlc3MuUG9wZW4oWycuL2EnXSwgc3RkaW49c3VicHJvY2Vzcy5QSVBFLCBzdGRvdXQ9c3VicHJvY2Vzcy5QSVBFLCBzdGRlcnI9c3VicHJvY2Vzcy5QSVBFLCB0ZXh0PVRydWUpCm91dHB1dCwgZXJyb3IgPSBwcm9jZXNzLmNvbW11bmljYXRlKGlucHV0PWlucHV0X3N0cmluZykKaWYgZXJyb3I6CiAgICBwcmludChlcnJvcikKZWxzZToKICAgIHByaW50KG91dHB1dCk=">
+  <img class="code-fence-highlighter-copy-button-icon" data-original-src="" src="http://localhost:63342/markdownPreview/1936059872/?_ijt=upbao5hoe6vdenoa3sang3hjgo">
   <span class="tooltiptext">Copy to clipboard</span>
-</div><code class="language-python" md-src-pos="10213..10451"><span md-src-pos="10213..10223"></span><span md-src-pos="10223..10251">process = subprocess.Popen([</span><span md-src-pos="10251..10256" style="color: rgb(6, 125, 23);">'./a'</span><span md-src-pos="10256..10335">], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=</span><span md-src-pos="10335..10339" style="color: rgb(0, 51, 179);">True</span><span md-src-pos="10339..10341">)
-</span><span md-src-pos="10341..10397">output, error = process.communicate(input=input_string)
-</span><span md-src-pos="10397..10399" style="color: rgb(0, 51, 179);">if</span><span md-src-pos="10399..10407"> error:
-</span><span md-src-pos="10407..10424">    print(error)
-</span><span md-src-pos="10424..10428" style="color: rgb(0, 51, 179);">else</span><span md-src-pos="10428..10430">:
-</span><span md-src-pos="10430..10448">    print(output)
-</span><span md-src-pos="10448..10451"></span></code></pre>
-   <p md-src-pos="10453..10655"><span md-src-pos="10453..10466">At the end of</span> <strong md-src-pos="10467..10486">skewb_solver.py</strong><span md-src-pos="10486..10487">,</span> <span md-src-pos="10488..10503">it will run the</span> <strong md-src-pos="10504..10511">./a</strong> <span md-src-pos="10512..10525">compiled from</span> <strong md-src-pos="10526..10555">skewb_solution_finder.cpp</strong><span md-src-pos="10555..10556">,</span> <span md-src-pos="10557..10600">then it will input the colour of each side,</span> <span md-src-pos="10601..10644">capture and display the output from the C++</span> <span md-src-pos="10645..10655">programme.</span></p>
-   <h2 id="6-finding-fewest-moves-solution" md-src-pos="10657..10692">6. Finding Fewest Moves Solution</h2>
-   <p md-src-pos="10694..10877"><span md-src-pos="10694..10719">I added a for loop to the</span> <strong md-src-pos="10720..10749">skewb_solution_finder.cpp</strong> <span md-src-pos="10750..10787">to search for solution for 100 times,</span> <span md-src-pos="10788..10838">and return the solution with the fewest move count</span> (<span md-src-pos="10840..10848">saved to</span> <strong md-src-pos="10849..10875">fewest_move_finder.cpp</strong>)<span md-src-pos="10876..10877">.</span></p>
-   <h3 id="6-i-finding-fewest-moves-solution-for-carter" md-src-pos="10879..10929">6. i. Finding Fewest Moves Solution for Carter</h3>
-   <p md-src-pos="10930..11296"><span md-src-pos="10930..11009">Then I tried to find the moves needed to solve the 5 scrambles of Carter Kucala</span>'<span md-src-pos="11010..11077">s final round at Going Fast in Grandview 2024 using this programme.</span> <span md-src-pos="11078..11165">The reason I chose this average was because the last solve was the world record single,</span> <span md-src-pos="11166..11215">but he did not perform that well in other solves.</span> <span md-src-pos="11216..11247">The table below shows the time,</span> <span md-src-pos="11248..11257">scramble,</span> <span md-src-pos="11258..11296">number of moves found by my programme.</span></p>
-   <table md-src-pos="11298..11843">
+</div><code class="language-python" md-src-pos="10458..10696"><span md-src-pos="10458..10468"></span><span md-src-pos="10468..10496">process = subprocess.Popen([</span><span md-src-pos="10496..10501" style="color: rgb(6, 125, 23);">'./a'</span><span md-src-pos="10501..10580">], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=</span><span md-src-pos="10580..10584" style="color: rgb(0, 51, 179);">True</span><span md-src-pos="10584..10586">)
+</span><span md-src-pos="10586..10642">output, error = process.communicate(input=input_string)
+</span><span md-src-pos="10642..10644" style="color: rgb(0, 51, 179);">if</span><span md-src-pos="10644..10652"> error:
+</span><span md-src-pos="10652..10669">    print(error)
+</span><span md-src-pos="10669..10673" style="color: rgb(0, 51, 179);">else</span><span md-src-pos="10673..10675">:
+</span><span md-src-pos="10675..10693">    print(output)
+</span><span md-src-pos="10693..10696"></span></code></pre>
+   <p md-src-pos="10698..10900"><span md-src-pos="10698..10711">At the end of</span> <strong md-src-pos="10712..10731">skewb_solver.py</strong><span md-src-pos="10731..10732">,</span> <span md-src-pos="10733..10748">it will run the</span> <strong md-src-pos="10749..10756">./a</strong> <span md-src-pos="10757..10770">compiled from</span> <strong md-src-pos="10771..10800">skewb_solution_finder.cpp</strong><span md-src-pos="10800..10801">,</span> <span md-src-pos="10802..10845">then it will input the colour of each side,</span> <span md-src-pos="10846..10889">capture and display the output from the C++</span> <span md-src-pos="10890..10900">programme.</span></p>
+   <h2 id="6-more-statistics" md-src-pos="10902..10923">6. More Statistics</h2>
+   <h3 id="6-i-finding-fewest-moves-solution-for-carter" md-src-pos="10925..10975">6. i. Finding Fewest Moves Solution for Carter</h3>
+   <p md-src-pos="10977..11159"><span md-src-pos="10977..11002">I added a for loop to the</span> <strong md-src-pos="11003..11032">skewb_solution_finder.cpp</strong> <span md-src-pos="11033..11069">to search for solution for 50 times,</span> <span md-src-pos="11070..11120">and return the solution with the fewest move count</span> (<span md-src-pos="11122..11130">saved to</span> <strong md-src-pos="11131..11157">fewest_move_finder.cpp</strong>)<span md-src-pos="11158..11159">.</span></p>
+   <p md-src-pos="11161..11527"><span md-src-pos="11161..11240">Then I tried to find the moves needed to solve the 5 scrambles of Carter Kucala</span>'<span md-src-pos="11241..11308">s final round at Going Fast in Grandview 2024 using this programme.</span> <span md-src-pos="11309..11396">The reason I chose this average was because the last solve was the world record single,</span> <span md-src-pos="11397..11446">but he did not perform that well in other solves.</span> <span md-src-pos="11447..11478">The table below shows the time,</span> <span md-src-pos="11479..11488">scramble,</span> <span md-src-pos="11489..11527">number of moves found by my programme.</span></p>
+   <table md-src-pos="11529..12074">
     <thead>
-     <tr md-src-pos="11298..11375">
-      <th align="center" md-src-pos="11299..11307">Solve</th>
-      <th align="center" md-src-pos="11308..11317">Result</th>
-      <th align="center" md-src-pos="11318..11348">Scramble (11 moves)</th>
-      <th align="center" md-src-pos="11349..11374">Fewest number of moves</th>
+     <tr md-src-pos="11529..11606">
+      <th align="center" md-src-pos="11530..11538">Solve</th>
+      <th align="center" md-src-pos="11539..11548">Result</th>
+      <th align="center" md-src-pos="11549..11579">Scramble (11 moves)</th>
+      <th align="center" md-src-pos="11580..11605">Fewest number of moves</th>
      </tr>
     </thead>
     <tbody>
-     <tr md-src-pos="11454..11531">
-      <td align="center" md-src-pos="11455..11463">1</td>
-      <td align="center" md-src-pos="11464..11473">2.49</td>
-      <td align="center" md-src-pos="11474..11504">R B L’ U’ L’ R B’ R’ B R B</td>
-      <td align="center" md-src-pos="11505..11530">9</td>
+     <tr md-src-pos="11685..11762">
+      <td align="center" md-src-pos="11686..11694">1</td>
+      <td align="center" md-src-pos="11695..11704">2.49</td>
+      <td align="center" md-src-pos="11705..11735">R B L’ U’ L’ R B’ R’ B R B</td>
+      <td align="center" md-src-pos="11736..11761">9</td>
      </tr>
-     <tr class="intellij-row-even" md-src-pos="11532..11609">
-      <td align="center" md-src-pos="11533..11541">2</td>
-      <td align="center" md-src-pos="11542..11551">1.77</td>
-      <td align="center" md-src-pos="11552..11582">U L U’ B’ U’ B’ U’ L B U’ R’</td>
-      <td align="center" md-src-pos="11583..11608">9</td>
+     <tr class="intellij-row-even" md-src-pos="11763..11840">
+      <td align="center" md-src-pos="11764..11772">2</td>
+      <td align="center" md-src-pos="11773..11782">1.77</td>
+      <td align="center" md-src-pos="11783..11813">U L U’ B’ U’ B’ U’ L B U’ R’</td>
+      <td align="center" md-src-pos="11814..11839">9</td>
      </tr>
-     <tr md-src-pos="11610..11687">
-      <td align="center" md-src-pos="11611..11619">3</td>
-      <td align="center" md-src-pos="11620..11629">3.32</td>
-      <td align="center" md-src-pos="11630..11660">U L B U’ B’ L’ B R’ B’ L U</td>
-      <td align="center" md-src-pos="11661..11686">7</td>
+     <tr md-src-pos="11841..11918">
+      <td align="center" md-src-pos="11842..11850">3</td>
+      <td align="center" md-src-pos="11851..11860">3.32</td>
+      <td align="center" md-src-pos="11861..11891">U L B U’ B’ L’ B R’ B’ L U</td>
+      <td align="center" md-src-pos="11892..11917">7</td>
      </tr>
-     <tr class="intellij-row-even" md-src-pos="11688..11765">
-      <td align="center" md-src-pos="11689..11697">4</td>
-      <td align="center" md-src-pos="11698..11707">4.65</td>
-      <td align="center" md-src-pos="11708..11738">R B’ U’ B U B L’ U B’ U R</td>
-      <td align="center" md-src-pos="11739..11764">8</td>
+     <tr class="intellij-row-even" md-src-pos="11919..11996">
+      <td align="center" md-src-pos="11920..11928">4</td>
+      <td align="center" md-src-pos="11929..11938">4.65</td>
+      <td align="center" md-src-pos="11939..11969">R B’ U’ B U B L’ U B’ U R</td>
+      <td align="center" md-src-pos="11970..11995">8</td>
      </tr>
-     <tr md-src-pos="11766..11843">
-      <td align="center" md-src-pos="11767..11775">5</td>
-      <td align="center" md-src-pos="11776..11785">0.75</td>
-      <td align="center" md-src-pos="11786..11816">B L R’ B’ L U B’ R U’ R U</td>
-      <td align="center" md-src-pos="11817..11842">8</td>
+     <tr md-src-pos="11997..12074">
+      <td align="center" md-src-pos="11998..12006">5</td>
+      <td align="center" md-src-pos="12007..12016">0.75</td>
+      <td align="center" md-src-pos="12017..12047">B L R’ B’ L U B’ R U’ R U</td>
+      <td align="center" md-src-pos="12048..12073">8</td>
      </tr>
     </tbody>
    </table>
-   <p md-src-pos="11845..12093"><span md-src-pos="11845..11864">For the last solve,</span> <span md-src-pos="11865..11898">he did find the 8 moves solution.</span> <span md-src-pos="11899..11907">However,</span> <span md-src-pos="11908..11965">he did not find the 7 moves solution for the third solve.</span> <span md-src-pos="11966..12031">This shows that the current method that the top solvers are using</span> (<span md-src-pos="12033..12045">NS algorithm</span>) <span md-src-pos="12047..12093">is unable to attain the fewest moves solution.</span></p>
-   <p md-src-pos="12095..12282"><span md-src-pos="12095..12097">It</span>'<span md-src-pos="12098..12197">s also worth noting that the third fastest solve was done by Simon Kellum in this same competition,</span> <span md-src-pos="12198..12224">solving that same scramble</span>! <span md-src-pos="12226..12282">This shows that luck really play a role in skewb solves.</span></p>
-   <h2 id="7-future-works" md-src-pos="12285..12303">7. Future Works</h2>
-   <p md-src-pos="12304..12444"><span md-src-pos="12304..12348">The code could be generalised for 3x3 cubes,</span> <span md-src-pos="12349..12371">or even other puzzels,</span> <span md-src-pos="12372..12435">this could be made into a programme that solves different Rubik</span>'<span md-src-pos="12436..12444">s cubes.</span></p>
-   <p md-src-pos="12446..12673"><span md-src-pos="12446..12451">Also,</span> <span md-src-pos="12452..12494">the colour recognition is not very robust.</span> <span md-src-pos="12495..12519">In low light conditions,</span> <span md-src-pos="12520..12566">or when the webcam quality is not good enough,</span> <span md-src-pos="12567..12616">the programme might fail to recognise the colour.</span> <span md-src-pos="12617..12673">The colour detection method in python could be improved.</span></p>
-   <h2 id="8-reference" md-src-pos="12675..12690">8. Reference</h2>
-   <p md-src-pos="12692..12714"><span md-src-pos="12692..12713">External library used</span>:</p>
-   <ul md-src-pos="12715..12753">
-    <li md-src-pos="12715..12722">numpy</li>
-    <li md-src-pos="12723..12731">Pillow</li>
-    <li md-src-pos="12732..12740">OpenCV</li>
-    <li md-src-pos="12741..12753">Matplotlib</li>
+   <p md-src-pos="12076..12324"><span md-src-pos="12076..12095">For the last solve,</span> <span md-src-pos="12096..12129">he did find the 8 moves solution.</span> <span md-src-pos="12130..12138">However,</span> <span md-src-pos="12139..12196">he did not find the 7 moves solution for the third solve.</span> <span md-src-pos="12197..12262">This shows that the current method that the top solvers are using</span> (<span md-src-pos="12264..12276">NS algorithm</span>) <span md-src-pos="12278..12324">is unable to attain the fewest moves solution.</span></p>
+   <p md-src-pos="12326..12513"><span md-src-pos="12326..12328">It</span>'<span md-src-pos="12329..12428">s also worth noting that the third fastest solve was done by Simon Kellum in this same competition,</span> <span md-src-pos="12429..12455">solving that same scramble</span>! <span md-src-pos="12457..12513">This shows that luck really play a role in skewb solves.</span></p>
+   <h3 id="6-ii-average-iterations-needed-to-find-the-solutions-and-the-average-moves-of-the-solutions" md-src-pos="12515..12612">6. ii. Average Iterations Needed to Find the Solutions and the Average Moves of the Solutions</h3>
+   <p md-src-pos="12614..12864"><span md-src-pos="12614..12648">I randomly generated 11 scrambles,</span> <span md-src-pos="12649..12683">with number of moves from 1 to 11,</span> <span md-src-pos="12684..12786">and tested how many iterations are needed to find the solutions for these scrambles using Monte Carlo,</span> <span md-src-pos="12787..12818">and the moves of the solutions,</span> <span md-src-pos="12819..12833">for 100 times.</span> <span md-src-pos="12834..12864">The averages are listed below.</span></p>
+   <table md-src-pos="12866..13983">
+    <thead>
+     <tr md-src-pos="12866..12951">
+      <th align="center" md-src-pos="12867..12885">Scrambles length</th>
+      <th align="center" md-src-pos="12886..12913">Scrambles</th>
+      <th align="center" md-src-pos="12914..12929">Average moves</th>
+      <th align="center" md-src-pos="12930..12950">Average iterations</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr md-src-pos="13038..13123">
+      <td align="center" md-src-pos="13039..13057">1</td>
+      <td align="center" md-src-pos="13058..13085">U</td>
+      <td align="center" md-src-pos="13086..13101">1</td>
+      <td align="center" md-src-pos="13102..13122">7.72</td>
+     </tr>
+     <tr class="intellij-row-even" md-src-pos="13124..13209">
+      <td align="center" md-src-pos="13125..13143">2</td>
+      <td align="center" md-src-pos="13144..13171">B R</td>
+      <td align="center" md-src-pos="13172..13187">2</td>
+      <td align="center" md-src-pos="13188..13208">46.9</td>
+     </tr>
+     <tr md-src-pos="13210..13295">
+      <td align="center" md-src-pos="13211..13229">3</td>
+      <td align="center" md-src-pos="13230..13257">L U L</td>
+      <td align="center" md-src-pos="13258..13273">3</td>
+      <td align="center" md-src-pos="13274..13294">306.76</td>
+     </tr>
+     <tr class="intellij-row-even" md-src-pos="13296..13381">
+      <td align="center" md-src-pos="13297..13315">4</td>
+      <td align="center" md-src-pos="13316..13343">L' B' R U</td>
+      <td align="center" md-src-pos="13344..13359">4</td>
+      <td align="center" md-src-pos="13360..13380">1688.8</td>
+     </tr>
+     <tr md-src-pos="13382..13467">
+      <td align="center" md-src-pos="13383..13401">5</td>
+      <td align="center" md-src-pos="13402..13429">L U R' U' R</td>
+      <td align="center" md-src-pos="13430..13445">5.361</td>
+      <td align="center" md-src-pos="13446..13466">8162.51</td>
+     </tr>
+     <tr class="intellij-row-even" md-src-pos="13468..13553">
+      <td align="center" md-src-pos="13469..13487">6</td>
+      <td align="center" md-src-pos="13488..13515">R U' L' R L U'</td>
+      <td align="center" md-src-pos="13516..13531">6.583</td>
+      <td align="center" md-src-pos="13532..13552">45323.3</td>
+     </tr>
+     <tr md-src-pos="13554..13639">
+      <td align="center" md-src-pos="13555..13573">7</td>
+      <td align="center" md-src-pos="13574..13601">U L U' R B' R L</td>
+      <td align="center" md-src-pos="13602..13617">8.1</td>
+      <td align="center" md-src-pos="13618..13638">285151</td>
+     </tr>
+     <tr class="intellij-row-even" md-src-pos="13640..13725">
+      <td align="center" md-src-pos="13641..13659">8</td>
+      <td align="center" md-src-pos="13660..13687">R' L U B U B' L R</td>
+      <td align="center" md-src-pos="13688..13703">9.55</td>
+      <td align="center" md-src-pos="13704..13724">913639</td>
+     </tr>
+     <tr md-src-pos="13726..13811">
+      <td align="center" md-src-pos="13727..13745">9</td>
+      <td align="center" md-src-pos="13746..13773">R' L' R' L' B' L' U B' U</td>
+      <td align="center" md-src-pos="13774..13789">9.32</td>
+      <td align="center" md-src-pos="13790..13810">709984</td>
+     </tr>
+     <tr class="intellij-row-even" md-src-pos="13812..13897">
+      <td align="center" md-src-pos="13813..13831">10</td>
+      <td align="center" md-src-pos="13832..13859">L B' R U L U' L' R B' U'</td>
+      <td align="center" md-src-pos="13860..13875">9.16</td>
+      <td align="center" md-src-pos="13876..13896">444755</td>
+     </tr>
+     <tr md-src-pos="13898..13983">
+      <td align="center" md-src-pos="13899..13917">11</td>
+      <td align="center" md-src-pos="13918..13945">U' B U L U L R' B' L B' L</td>
+      <td align="center" md-src-pos="13946..13961">9.39</td>
+      <td align="center" md-src-pos="13962..13982">768838</td>
+     </tr>
+    </tbody>
+   </table>
+   <p md-src-pos="13985..14047"><span md-src-pos="13985..14014">To better visualise the data,</span> <span md-src-pos="14015..14047">I plotted the following 2 plots.</span></p>
+   <p md-src-pos="14049..14160"><img src="README_picture/average_moves.png" alt="averagemoves" __idea-generated="true" md-src-pos="14049..14099" data-original-src="README_picture/average_moves.png"> <img src="README_picture/average_iterations.png" alt="averageiterations" __idea-generated="true" md-src-pos="14100..14160" data-original-src="README_picture/average_iterations.png"></p>
+   <p md-src-pos="14162..14628"><span md-src-pos="14162..14189">As observed from the plots,</span> <span md-src-pos="14190..14331">the number of iteration needed to find the solution and the number of moves of the solution found flatted out from scramble length 8 onwards.</span> <span md-src-pos="14332..14337">Also,</span> <span md-src-pos="14338..14440">the iterations needed significantly increased when the scramble length changed from 6 to 7 and 7 to 8.</span> <span md-src-pos="14441..14451">Therefore,</span> <span md-src-pos="14452..14471">it got me thinking,</span> <span md-src-pos="14472..14575">is it possible to train a neuro network that can predict first few steps of the solution and in return,</span> <span md-src-pos="14576..14628">decrease the iterations needed to find the solution?</span></p>
+   <h3 id="6-iii-giving-hints-to-the-programme" md-src-pos="14630..14671">6. iii. Giving Hints to the Programme</h3>
+   <p md-src-pos="14673..15129"><span md-src-pos="14673..14703">To address the above question,</span> <span md-src-pos="14704..14788">I first confirmed that if the number of iterations would really decrease when I give</span> "<span md-src-pos="14790..14795">hints</span>" <span md-src-pos="14797..14814">to the programme.</span> <span md-src-pos="14815..14855">I took the scramble with length 11 above</span> (<span md-src-pos="14857..14858">U</span>' <span md-src-pos="14860..14871">B U L U L R</span>' <span md-src-pos="14873..14874">B</span>' <span md-src-pos="14876..14879">L B</span>' <span md-src-pos="14881..14882">L</span>) <span md-src-pos="14884..14898">as an example.</span> <span md-src-pos="14899..14983">The first move of the solution is just the reverse of the last move of the scramble,</span> <span md-src-pos="14984..14994">which is L</span>' (<span md-src-pos="14997..15000">let</span>'<span md-src-pos="15001..15019">s call this a hint</span>)<span md-src-pos="15020..15021">.</span> <span md-src-pos="15022..15077">I try to give the programme hint of 1 moves to 5 moves,</span> <span md-src-pos="15078..15100">and run for 100 times,</span> <span md-src-pos="15101..15129">the result are listed below.</span></p>
+   <table md-src-pos="15131..15529">
+    <thead>
+     <tr md-src-pos="15131..15187">
+      <th align="center" md-src-pos="15132..15149">Number of hints</th>
+      <th align="center" md-src-pos="15150..15165">Average moves</th>
+      <th align="center" md-src-pos="15166..15186">Average iterations</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr md-src-pos="15245..15301">
+      <td align="center" md-src-pos="15246..15263">1</td>
+      <td align="center" md-src-pos="15264..15279">8.67</td>
+      <td align="center" md-src-pos="15280..15300">514261</td>
+     </tr>
+     <tr class="intellij-row-even" md-src-pos="15302..15358">
+      <td align="center" md-src-pos="15303..15320">2</td>
+      <td align="center" md-src-pos="15321..15336">9.91</td>
+      <td align="center" md-src-pos="15337..15357">971047</td>
+     </tr>
+     <tr md-src-pos="15359..15415">
+      <td align="center" md-src-pos="15360..15377">3</td>
+      <td align="center" md-src-pos="15378..15393">9.43</td>
+      <td align="center" md-src-pos="15394..15414">706315</td>
+     </tr>
+     <tr class="intellij-row-even" md-src-pos="15416..15472">
+      <td align="center" md-src-pos="15417..15434">4</td>
+      <td align="center" md-src-pos="15435..15450">7.88</td>
+      <td align="center" md-src-pos="15451..15471">269720</td>
+     </tr>
+     <tr md-src-pos="15473..15529">
+      <td align="center" md-src-pos="15474..15491">5</td>
+      <td align="center" md-src-pos="15492..15507">6.44</td>
+      <td align="center" md-src-pos="15508..15528">44363.8</td>
+     </tr>
+    </tbody>
+   </table>
+   <p md-src-pos="15531..16027"><span md-src-pos="15531..15596">The first great reduce in iteration is caused by some randomness,</span> <span md-src-pos="15597..15657">as a state of a skewb can be solved by different algorithms.</span> <span md-src-pos="15658..15728">We should instead focus on the next continuous reduction in iteration,</span> <span md-src-pos="15729..15849">we can see that giving it hint of 4 to 5 moves will greatly reduce the number of iterations needed to find the solution.</span> <span md-src-pos="15850..15860">Therefore,</span> <span md-src-pos="15861..15966">if we could train a neuro network that can predict possible first 5 moves base on the state of the skewb,</span> <span md-src-pos="15967..16027">we can greatly reduce the computational time of Monte Carlo.</span></p>
+   <h2 id="7-future-works" md-src-pos="16030..16048">7. Future Works</h2>
+   <p md-src-pos="16049..16189"><span md-src-pos="16049..16093">The code could be generalised for 3x3 cubes,</span> <span md-src-pos="16094..16116">or even other puzzels,</span> <span md-src-pos="16117..16180">this could be made into a programme that solves different Rubik</span>'<span md-src-pos="16181..16189">s cubes.</span></p>
+   <p md-src-pos="16191..16418"><span md-src-pos="16191..16196">Also,</span> <span md-src-pos="16197..16239">the colour recognition is not very robust.</span> <span md-src-pos="16240..16264">In low light conditions,</span> <span md-src-pos="16265..16311">or when the webcam quality is not good enough,</span> <span md-src-pos="16312..16361">the programme might fail to recognise the colour.</span> <span md-src-pos="16362..16418">The colour detection method in python could be improved.</span></p>
+   <p md-src-pos="16420..16542"><span md-src-pos="16420..16427">Lastly,</span> <span md-src-pos="16428..16454">as mentioned in last part,</span> <span md-src-pos="16455..16542">we could train a neuro network to predict first few moves to reduce computational time.</span></p>
+   <h2 id="8-reference" md-src-pos="16544..16559">8. Reference</h2>
+   <p md-src-pos="16561..16583"><span md-src-pos="16561..16582">External library used</span>:</p>
+   <ul md-src-pos="16584..16622">
+    <li md-src-pos="16584..16591">numpy</li>
+    <li md-src-pos="16592..16600">Pillow</li>
+    <li md-src-pos="16601..16609">OpenCV</li>
+    <li md-src-pos="16610..16622">Matplotlib</li>
    </ul>
-   <p md-src-pos="12755..12907"><span md-src-pos="12755..12789">Website used to animate algorithms</span>: <a href="https://alpha.twizzle.net/edit/?puzzle=skewb" md-src-pos="12791..12835">https://alpha.twizzle.net/edit/?puzzle=skewb</a><br><span md-src-pos="12838..12864">Github page of the website</span>: <a href="https://github.com/cubing/alg.cubing.net" md-src-pos="12866..12906">https://github.com/cubing/alg.cubing.net</a></p>
+   <p md-src-pos="16624..16776"><span md-src-pos="16624..16658">Website used to animate algorithms</span>: <a href="https://alpha.twizzle.net/edit/?puzzle=skewb" md-src-pos="16660..16704">https://alpha.twizzle.net/edit/?puzzle=skewb</a><br><span md-src-pos="16707..16733">Github page of the website</span>: <a href="https://github.com/cubing/alg.cubing.net" md-src-pos="16735..16775">https://github.com/cubing/alg.cubing.net</a></p>
   </div>
  </body>
 </html>
