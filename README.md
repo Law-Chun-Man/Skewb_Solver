@@ -1,7 +1,3 @@
-For the report, please visit: https://law-chun-man.github.io/Skewb_Solver/report.html,
-or, open the report.html file
-
-
 # Skewb Solver (Monte Carlo)
 ## 4061 Project B report
 
