@@ -248,7 +248,7 @@ To address the above question, I first confirmed that if the number of iteration
 |        4        |     7.88      |       269720       |
 |        5        |     6.44      |      44363.8       |
 
-The first great reduce in iteration is caused by some randomness, as a state of a skewb can be solved by different algorithms. We should instead focus on the next continuous reduction in iteration, we can see that giving it hint of 4 to 5 moves will greatly reduce the number of iterations needed to find the solution. Therefore, if we could train a neuro network that can predict possible first 5 moves base on the state of the skewb, we can greatly reduce the computational time of Monte Carlo.
+The first great reduce in iteration is caused by some randomness, as a state of a skewb can be solved by different algorithms. We should instead focus on the next continuous reduction in iteration, we can see that giving it hint of 4 to 5 moves will greatly reduce the number of iterations needed to find the solution. Therefore, if we could train a neuro network that can predict possible first 5 moves base on the state of the skewb, we can greatly reduce the computational time of Monte Carlo. Reduced by how much? You might ask. For my computer, the time needed to find the solution without hint is on average 630 ms, while 47 ms with hints.
 
 
 ## 7. Future Works
@@ -256,7 +256,7 @@ The code could be generalised for 3x3 cubes, or even other puzzels, this could b
 
 Also, the colour recognition is not very robust. In low light conditions, or when the webcam quality is not good enough, the programme might fail to recognise the colour. The colour detection method in python could be improved.
 
-Lastly, as mentioned in last part, we could train a neuro network to predict first few moves to reduce computational time.
+Lastly, as mentioned in last part, we could train a neuro network to predict first few moves to reduce the number of moves that is needed to be simulated. The total computational time of 2 methods can be compared.
 
 ## 8. Reference
 
